@@ -1,4 +1,4 @@
-/* public/css/registration.css */
+/* public/css/login.css */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,16 +7,17 @@ body {
     min-height: 100vh;
 }
 
-.registration-main {
+.login-main {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.registration-container {
+.login-container {
     background-color: #f9f9f9;
     padding: 20px;
+    margin: 50px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -25,28 +26,28 @@ body {
     align-items: center;
 }
 
-.registration-container h2 {
+.login-container h2 {
     margin-bottom: 20px;
 }
 
-.registration-container form {
+.login-container form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.registration-container label {
+.login-container label {
     margin-bottom: 5px;
 }
 
-.registration-container input {
+.login-container input {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.registration-container button {
+.login-container button {
     padding: 10px;
     background-color: #333;
     color: white;
@@ -55,16 +56,16 @@ body {
     cursor: pointer;
 }
 
-.registration-container button:hover {
+.login-container button:hover {
     background-color: #555;
 }
 
-.registration-container a {
+.login-container a {
     margin-top: 10px;
     color: #333;
     text-decoration: none;
 }
 
-.registration-container a:hover {
+.login-container a:hover {
     text-decoration: underline;
 }
