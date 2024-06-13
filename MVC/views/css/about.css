@@ -1,0 +1,42 @@
+.about-us-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.about-us-title {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+}
+.about-us-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+.about-us-section {
+    margin-bottom: 20px;
+}
+.section-title {
+    font-size: 24px;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+.section-content {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+.value-list, .offer-list, .contact-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+.value-item, .offer-item, .contact-item {
+    background-color: #f9f9f9;
+    margin: 5px 0;
+    padding: 10px;
+    border-left: 4px solid #333;
+}

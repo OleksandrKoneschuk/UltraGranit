@@ -14,6 +14,7 @@ class Core
     private static $instance;
     public $session;
 
+
     private function __construct() {
         $this->template = new Template($this->defaultLayoutPath);
         $host = Config::get()->dbHost;
@@ -26,7 +27,7 @@ class Core
     }
 
     public function run($route) {
-        $this->router = new \core\Router($route);
+        $this->router = new Router($route);
         $params = $this->router->run();
         if (!empty($params))
             $this->template->setParams($params);

@@ -5,12 +5,26 @@ namespace MVC\controllers;
 use core\Controller;
 use core\Core;
 use http\Client\Curl\User;
+use MVC\models\Order;
 use MVC\models\Users;
 
 class UsersController extends Controller
 {
     public function actionLogin()
     {
+        $successMessage = Core::get()->session->get('success_message');
+        $registeredPhoneNumber = Core::get()->session->get('registered_phone_number');
+
+        if ($successMessage) {
+            $this->template->setParam('success_message', $successMessage);
+            Core::get()->session->remove('success_message');
+        }
+
+        if ($registeredPhoneNumber) {
+            $this->template->setParam('registered_phone_number', $registeredPhoneNumber);
+            Core::get()->session->remove('registered_phone_number');
+        }
+
         if (Users::IsUserLogged())
             return $this->redirect('/users/account');
         if ($this->isPost) {
@@ -27,7 +41,13 @@ class UsersController extends Controller
 
     public function actionAccount()
     {
-        return $this->render();
+        $user = Users::GetLoggedUserData();
+        if ($user) {
+            $orders = Order::getOrdersByUserId($user->id);
+            return $this->render('account', ['user' => $user, 'orders' => $orders]);
+        } else {
+            return $this->redirect('/users/login');
+        }
     }
 
     public function actionLogout()
@@ -63,7 +83,10 @@ class UsersController extends Controller
 
             if (!$this->isErrorMassageExists()){
                 Users::RegisterUser($this->post->first_name, $this->post->last_name, $this->post->middle_name, $this->post->phone_number, $this->post->email, $this->post->password);
+                Core::get()->session->set('success_message', 'Ви успішно зареєстровані! <br/> Увійдіть в акаунт');
+                Core::get()->session->set('registered_phone_number', $this->post->phone_number);
 
+                return $this->redirect('/users/login');
             }
         }
         return $this->render();

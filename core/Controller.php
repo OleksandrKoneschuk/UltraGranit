@@ -6,10 +6,12 @@ class Controller
 {
     protected $template;
     protected $errorMessages;
+    protected $successMessages;
     public $isPost = false;
     public $isGet = false;
     public $post;
     public $get;
+    public $route;
 
     public function __construct()
     {
@@ -28,12 +30,17 @@ class Controller
         $this->post = new Post();
         $this->get = new Get();
         $this->errorMessages = [];
+        $this->successMessages = [];
     }
 
-    public function render($pathToView = null) :array
+    public function render($pathToView = null, $data = []) :array
     {
-        if (!empty($pathToView))
+        if (!empty($pathToView)) {
+            $module = Core::get()->moduleName;
+            $pathToView = __DIR__ . "/../MVC/views/{$module}/{$pathToView}.php";
             $this->template->setTemplateFilePath($pathToView);
+        }
+        $this->template->setParams($data);
         return [
             'Content' => $this->template->getHTML()
         ];
@@ -51,14 +58,31 @@ class Controller
         $this->template->setParam('error_message', implode('<br/>', $this->errorMessages));
     }
 
+    public function addSuccessMessage($massage = null) :void
+    {
+        $this->successMessages [] = $massage;
+        $this->template->setParam('success_message', implode('<br/>', $this->successMessages));
+    }
+
     public function clearErrorMessage() :void
     {
         $this->errorMessages = [];
         $this->template->setParam('error_message', null);
     }
 
+    public function clearSuccessMessage() :void
+    {
+        $this->successMessages = [];
+        $this->template->setParam('success_message', null);
+    }
+
     public function isErrorMassageExists() : bool
     {
         return count($this->errorMessages) > 0;
+    }
+
+    public function isSuccessMessageExists() : bool
+    {
+        return count($this->successMessages) > 0;
     }
 }

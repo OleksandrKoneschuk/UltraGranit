@@ -20,11 +20,23 @@ class Users extends Model
 
     public static function verification($phone_number, $password)
     {
-        $rows = self::findByCondition(['phone_number' => $phone_number, 'password' => $password]);
-        if (!empty($rows))
-            return $rows[0];
-        else
-            return null;
+        $rows = self::findByCondition(['phone_number' => $phone_number]);
+        if (!empty($rows)) {
+            $user = $rows[0];
+            if (password_verify($password, $user->password)) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
+    public static function isAdmin($user)
+    {
+        if ($user === null || $user->access_level === 1) {
+            return false;
+        } else {
+            return $user->access_level === 10;
+        }
     }
 
     public static function FindByPhoneNumber($phone_number)
@@ -51,15 +63,22 @@ class Users extends Model
         Core::get()->session->remove('user');
     }
 
+    public static function GetLoggedUserData()
+    {
+        return Core::get()->session->get('user');
+    }
+
     public static function RegisterUser($first_name, $last_name, $middle_name, $phone_number, $email, $password)
     {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         $user = new Users();
         $user->first_name = $first_name;
         $user->last_name = $last_name;
         $user->middle_name = $middle_name;
         $user->phone_number = $phone_number;
         $user->email = $email;
-        $user->password = $password;
+        $user->password = $hashedPassword;
         $user->save();
     }
 }

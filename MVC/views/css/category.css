@@ -1,0 +1,31 @@
+/* CSS для категорій */
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.category-list {
+    margin-top: 20px;
+}
+
+.category-list .card {
+    transition-duration: 0.5s;
+}
+
+.category-list .card:hover {
+    transform: scale(1.05);
+}
+
+.category-list .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.category-list .card .card-body {
+    padding: 15px;
+}
+
+.category-list .card .btn {
+    margin-top: 10px;
+}

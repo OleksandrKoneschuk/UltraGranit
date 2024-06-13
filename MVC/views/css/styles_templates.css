@@ -44,7 +44,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: white;
+    color: #F2F2F3;
     text-decoration: none;
 }
 
@@ -53,7 +53,7 @@ header .icons {
 }
 
 header .icons a {
-    color: white;
+    color: #F2F2F3;
     text-decoration: none;
     margin-left: 10px;
 }
@@ -65,7 +65,7 @@ header .icons a {
 
 footer {
     background-color: #333;
-    color: white;
+    color: #F2F2F3;
     text-align: center;
     padding: 10px 0;
     position: relative;
@@ -94,4 +94,90 @@ footer .container .map img {
 
 i {
     margin-right: 5px;
+}
+
+.header-link.active {
+    color: #7A8580;
+}
+
+.header-link {
+    color: #F2F2F3;
+    text-decoration: none;
+}
+
+nav .header-link:hover {
+    color: #7A8580;
+    text-decoration: none;
+}
+
+footer .contact-info, .phone-info, .address-info, .email-info, .map {
+    margin-bottom: 30px;
+}
+
+footer .phone-info a, .email-info a, .address-info a{
+    color: #F2F2F3;
+    text-decoration: none;
+}
+
+footer .email-info a{
+    color: #F2F2F3;
+    text-decoration: none;
+}
+
+footer .address-info a{
+    color: #F2F2F3;
+    text-decoration: none;
+}
+
+.phone-info a:hover, .email-info a:hover, .address-info a:hover{
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+
+/*Кошик*/
+.offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-item {
+    margin-bottom: 20px;
+}
+
+.total-price {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.offcanvas-body img {
+    max-width: 98%;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.offcanvas-body .remove-btn svg {
+    fill: #333;
+}
+
+.offcanvas-body a{
+    color: #333;
+    text-decoration: none;
+}
+
+.offcanvas-body a:hover{
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.total-price {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.order-button {
+    text-align: center;
+    margin-top: 10px;
 }

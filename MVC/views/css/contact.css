@@ -1,0 +1,13 @@
+.contact-info, .phone-info, .address-info, .email-info, .map {
+    margin-bottom: 30px;
+}
+
+.phone-info a, .email-info a, .address-info a{
+    color: black;
+    text-decoration: none;
+}
+
+.phone-info a:hover, .email-info a:hover, .address-info a:hover{
+    color: #0056b3;
+    text-decoration: underline;
+}

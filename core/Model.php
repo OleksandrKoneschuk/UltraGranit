@@ -24,21 +24,20 @@ class Model
         return $this->fieldsArray[$name];
     }
 
-    public static function deleteById($id)
-    {
-        Core::get()->db->delete(static::$tableName, [static::$primaryKey => $id]);
-    }
-
-    public static function deleteByCondition($conditionAssocArray)
-    {
-        Core::get()->db->delete(static::$tableName, $conditionAssocArray);
-    }
-
     public static function findById($id)
     {
         $arr = Core::get()->db->select(static::$tableName, '*', [static::$primaryKey => $id]);
         if (count($arr) > 0)
             return $arr[0];
+        else
+            return null;
+    }
+
+    public static function findAll()
+    {
+        $arr = Core::get()->db->select(static::$tableName, '*');
+        if (count($arr) > 0)
+            return $arr;
         else
             return null;
     }
@@ -50,6 +49,15 @@ class Model
             return $arr;
         else
             return null;
+    }
+    public static function deleteById($id)
+    {
+        Core::get()->db->delete(static::$tableName, [static::$primaryKey => $id]);
+    }
+
+    public static function deleteByCondition($conditionAssocArray)
+    {
+        Core::get()->db->delete(static::$tableName, $conditionAssocArray);
     }
 
     public function save()

@@ -1,5 +1,7 @@
 <?php
-/** @var string $error_message Повідомлення про помилку*/
+/** @var string $error_message Повідомлення про помилку
+ * @var string $success_message Повідомлення про успіх*/
+
 $this->Title = 'Реєстрація';
 ?>
 
@@ -24,7 +26,7 @@ $this->Title = 'Реєстрація';
             <?php endif; ?>
 
             <label for="first_name">Ім'я:</label>
-            <input value="<?=\core\Core::get()->controllerObject->post->first_name?>" type="text" id="first_name" name="first_name" pattern="[А-ЩЬЮЯҐЄІЇа-щьюяґєії' -]+">
+            <input value="<?=$this->controller->post->first_name?>" type="text" id="first_name" name="first_name" pattern="[А-ЩЬЮЯҐЄІЇа-щьюяґєії' -]+">
 
             <label for="last_name">Прізвище:</label>
             <input value="<?=$this->controller->post->last_name?>" type="text" id="last_name" name="last_name" pattern="[А-ЩЬЮЯҐЄІЇа-щьюяґєії' -]+">
