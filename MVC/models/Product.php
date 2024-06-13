@@ -128,10 +128,8 @@ class Product extends Model
             return false;
         }
 
-        // Отримуємо шлях до папки з фотографіями товару
         $directory = "files/products/{$id}/";
 
-        // Видалення всіх файлів у папці
         if (is_dir($directory)) {
             $files = glob($directory . '*', GLOB_MARK);
             foreach ($files as $file) {
@@ -139,13 +137,10 @@ class Product extends Model
                     unlink($file);
                 }
             }
-            // Видалення папки
             rmdir($directory);
         }
 
-        // Видалення записів з таблиці product_photos
         Core::get()->db->delete(self::$photoTableName, ['product_id' => $id]);
-        // Видалення запису з таблиці product
         Core::get()->db->delete(self::$tableName, ['id' => $id]);
 
         return true;
@@ -156,16 +151,13 @@ class Product extends Model
         $fieldsList = ['name', 'price', 'short_description', 'description', 'category_id', 'visible', 'main_photo'];
         $row = Utils::filterArray($row, $fieldsList);
 
-        // Отримуємо поточне основне фото
         $currentProduct = self::getProductById($id);
         $currentMainPhoto = $currentProduct->main_photo;
 
-        // Оновлюємо дані продукту
         Core::get()->db->update(self::$tableName, $row, [
             'id' => $id
         ]);
 
-        // Якщо нове основне фото вказане, видаляємо старе
         if (!empty($row['main_photo']) && $currentMainPhoto && $currentMainPhoto !== $row['main_photo']) {
             self::deletePhoto($currentMainPhoto);
         }

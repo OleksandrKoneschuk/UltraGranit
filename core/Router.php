@@ -42,7 +42,6 @@ class Router
     }
 
     public function done(){
-        // Можливо, додайте якусь логіку тут.
     }
 
     public function error($code, $message = '') : void {

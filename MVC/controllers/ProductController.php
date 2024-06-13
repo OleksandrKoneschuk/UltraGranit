@@ -56,10 +56,10 @@ class ProductController extends Controller
                     if ($tmpName) {
                         $additionalPhotoPath = $productDir . uniqid() . '.jpg';
                         if (move_uploaded_file($tmpName, $additionalPhotoPath)) {
-                            error_log("Successfully moved additional photo: " . $additionalPhotoPath); // Додано для логування
+                            error_log("Successfully moved additional photo: " . $additionalPhotoPath);
                             Product::addProductPhoto($productId, $additionalPhotoPath);
                         } else {
-                            error_log("Failed to move additional photo: " . $tmpName); // Логування помилки переміщення
+                            error_log("Failed to move additional photo: " . $tmpName);
                         }
                     }
                 }
@@ -84,14 +84,11 @@ class ProductController extends Controller
         $offset = ($page - 1) * $limit;
 
         if ($categoryId === 1) {
-            // Завантажити всі продукти
             $products = Product::getProducts($offset, $limit, $sort);
         } else {
-            // Завантажити продукти конкретної категорії
             $products = Product::getProductsByCategory($categoryId, $offset, $limit, $sort);
         }
 
-        // Перевірка на наявність додаткових продуктів
         $hasMore = count($products) === $limit;
 
         echo json_encode(['products' => $products, 'hasMore' => $hasMore, 'isAdmin' => Users::isAdmin($this->user)]);

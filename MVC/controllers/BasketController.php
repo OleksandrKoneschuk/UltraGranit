@@ -48,7 +48,6 @@ class BasketController extends Controller
 
         Basket::removeProductFromBasket($userId, $productId);
 
-        // Повернення оновленого списку продуктів
         $products = Basket::getProductsInBasket($userId);
         header('Content-Type: application/json');
         echo json_encode($products);

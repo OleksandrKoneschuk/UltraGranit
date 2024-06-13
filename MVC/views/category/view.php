@@ -130,7 +130,6 @@ $user = Users::GetLoggedUserData();
                 <h1><?= htmlspecialchars($category->name) ?></h1>
 
                 <div id="product-list" class="row">
-                    <!-- Initial products will be loaded here -->
                 </div>
 
                 <div class="d-flex justify-content-center">

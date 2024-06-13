@@ -39,7 +39,6 @@ class CategoryController extends Controller
     {
         $categoryId = intval($params[0]);
 
-        // Отримати інформацію про категорію
         if ($categoryId === 1) {
             $category = (object)['name' => 'Усі товари', 'id' => 1];
         } else {
@@ -80,14 +79,12 @@ class CategoryController extends Controller
 
                 $url .= '/' . $part;
 
-                // Заміна 'Category' на 'Категорії'
                 if (strtolower($part) === 'category') {
                     $breadcrumbs[] = [
                         'label' => 'Категорії',
                         'url' => $url
                     ];
                 } elseif (is_numeric($part) && isset($categoryNames[$part])) {
-                    // Відображення назви категорії
                     $breadcrumbs[] = [
                         'label' => $categoryNames[$part],
                         'url' => $url

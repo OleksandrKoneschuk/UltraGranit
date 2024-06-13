@@ -1,26 +1,26 @@
 .carousel-item {
     width: 100%;
-    height: 500px; /* Фіксована висота каруселі */
+    height: 500px;
 }
 
 .carousel-item img {
     height: 100%;
     width: auto;
     max-width: 100%;
-    object-fit: contain; /* Забезпечує, що зображення не розтягується і зберігає пропорції */
+    object-fit: contain;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: transparent; /* Забезпечує прозорий фон кнопок */
+    background-color: transparent;
 }
 .carousel-control-prev-icon::before,
 .carousel-control-next-icon::before {
-    content: ''; /* Видаляє дефолтний контент */
+    content: '';
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-color: #333; /* Колір кнопок */
+    background-color: #333;
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;

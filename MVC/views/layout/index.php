@@ -79,7 +79,7 @@ $current_page = $_SERVER['REQUEST_URI'];
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <!-- Контент кошика буде завантажено тут через JavaScript -->
+
     </div>
 </div>
 

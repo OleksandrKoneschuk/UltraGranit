@@ -2,7 +2,6 @@
 $this->Title = 'Акаунт';
 ?>
 
-    <link rel="stylesheet" href="/MVC/views/css/account.css">
     <main class="account-main">
         <div class="account-container">
             <?php if (isset($user)): ?>
@@ -59,15 +58,12 @@ $this->Title = 'Акаунт';
 <?php
 function formatPhoneNumber($phoneNumber)
 {
-    // Видаляємо всі нецифрові символи
     $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
 
-    // Перевіряємо чи номер має правильну кількість цифр
     if (strlen($phoneNumber) === 10) {
         $formatted = '+38-' . substr($phoneNumber, 0, 3) . '-(' . substr($phoneNumber, 3, 3) . ')-' . substr($phoneNumber, 6, 2) . '-(' . substr($phoneNumber, 8, 2) . ')';
         return $formatted;
     } else {
-        // Повертаємо оригінальний номер, якщо він не має правильний формат
         return $phoneNumber;
     }
 }

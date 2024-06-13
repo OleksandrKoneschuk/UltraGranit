@@ -53,27 +53,9 @@ $this->Title = 'Реєстрація';
 </main>
 
 <script>
-    /*function validateForm() {
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirm_password").value;
-
-        if (password !== confirmPassword) {
-            alert("Паролі не співпадають!");
-            return false;
-        }
-
-        var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-        if (!passwordPattern.test(password)) {
-            alert("Пароль повинен містити як мінімум одну цифру, одну малу і одну велику літеру, і бути довжиною не менше 8 символів.");
-            return false;
-        }
-        return true;
-    }*/
-
     $(document).ready(function () {
         $('#phone_number').mask('+380-(00)-000-(00)-00');
 
-        // Видалити маску перед відправкою форми
         $('form').on('submit', function () {
             $('#phone_number').val($('#phone_number').cleanVal());
         });

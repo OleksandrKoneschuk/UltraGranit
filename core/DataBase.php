@@ -21,7 +21,7 @@ class DataBase
             $where_fields = array_keys($where);
             $parts = [];
             foreach ($where_fields as $field) {
-                $paramKey = $subquery ? str_replace('.', '_', $field) : $field; // Замінюємо крапки на підкреслення для підзапитів
+                $paramKey = $subquery ? str_replace('.', '_', $field) : $field;
                 $parts[] = "{$field} = :{$paramKey}";
             }
             $where_string .= implode(' AND ', $parts);

@@ -16,17 +16,14 @@ class Order
         try {
             error_log("Order::createOrder - Starting transaction with data: " . json_encode($data));
 
-            // Перевірка наявності необхідних полів
             if (empty($data['last_name']) || empty($data['first_name']) || empty($data['phone_number']) || empty($data['nova_poshta'])) {
                 throw new \Exception('Не всі необхідні поля заповнені.');
             }
 
-            // Отримуємо товари з кошика
             $userId = $data['user_id'];
             $products = Basket::getProductsInBasket($userId);
             error_log("Order::createOrder - Products in basket: " . json_encode($products));
 
-            // Перевіряємо, чи є товари в кошику
             if (empty($products)) {
                 error_log("Order::createOrder - Basket is empty, cancelling order creation.");
                 $db->rollBack();
@@ -36,7 +33,6 @@ class Order
             $orderId = $db->insert(self::$tableName, $data);
             error_log("Order::createOrder - Order ID: " . $orderId);
 
-            // Додаємо товари до замовлення
             foreach ($products as $product) {
                 $orderProductData = [
                     'order_id' => $orderId,
@@ -47,7 +43,6 @@ class Order
                 error_log("Order::createOrder - Added product to order: " . json_encode($orderProductData));
             }
 
-            // Очищуємо кошик
             Basket::clearBasket($userId);
             error_log("Order::createOrder - Cleared basket for user ID: " . $userId);
 

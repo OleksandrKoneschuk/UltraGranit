@@ -63,6 +63,5 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Помилка завантаження додаткових товарів:', error));
     }
 
-    // Initial load
     loadProducts();
 });

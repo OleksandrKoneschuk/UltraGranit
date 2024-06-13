@@ -45,7 +45,7 @@ class OrderController extends Controller
 
     public function actionSubmit()
     {
-        header('Content-Type: application/json'); // Додаємо заголовок для JSON
+        header('Content-Type: application/json');
 
         $data = [
             'user_id' => $this->user ? $this->user->id : null,
@@ -64,7 +64,7 @@ class OrderController extends Controller
         error_log("OrderController::actionSubmit - Result: " . json_encode($result));
 
         if ($result['success']) {
-            $_SESSION['order_id'] = $result['order_id']; // Зберігаємо order_id в сесії
+            $_SESSION['order_id'] = $result['order_id'];
             echo json_encode(['success' => true]);
         } else {
             echo json_encode(['success' => false, 'error' => $result['error']]);

@@ -50,7 +50,7 @@ class Basket
                 'id' => $row->product_id
             ]);
             if (!empty($product)) {
-                $product[0]->basket_id = $row->id ?? null; // Додаємо basket_id до продукту
+                $product[0]->basket_id = $row->id ?? null;
                 $product[0]->quantity = $row->quantity ?? 1;
                 $products[] = $product[0];
             }
