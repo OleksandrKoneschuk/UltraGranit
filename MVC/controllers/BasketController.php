@@ -43,14 +43,23 @@ class BasketController extends Controller
 
     public function actionRemove($params)
     {
-        $userId = $this->user->id ?? null;
-        $productId = intval($params[0]);
-
-        Basket::removeProductFromBasket($userId, $productId);
-
-        $products = Basket::getProductsInBasket($userId);
         header('Content-Type: application/json');
-        echo json_encode($products);
+        try {
+            $basketItemId = intval($params[0]);
+            $userId = $this->user ? $this->user->id : null;
+
+            if ($userId) {
+                Basket::removeProductFromBasket($userId, $basketItemId);
+            } else {
+                Basket::removeProductFromBasketSession($basketItemId);
+            }
+
+            $products = Basket::getProductsInBasket($userId);
+            echo json_encode($products);
+        } catch (\Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
         exit();
     }
 }

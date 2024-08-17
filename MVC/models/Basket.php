@@ -70,6 +70,19 @@ class Basket
         }
     }
 
+    public static function removeProductFromBasketSession($basketItemId)
+    {
+        if (isset($_SESSION['basket'])) {
+            foreach ($_SESSION['basket'] as $key => $item) {
+                if ($item['id'] == $basketItemId) {
+                    unset($_SESSION['basket'][$key]);
+                    break;
+                }
+            }
+            $_SESSION['basket'] = array_values($_SESSION['basket']); // Reindex array
+        }
+    }
+
     public static function clearBasket($userId)
     {
         if ($userId) {
