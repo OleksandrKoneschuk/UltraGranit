@@ -17,10 +17,11 @@ $this->Title = 'Акаунт';
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>ID замовлення</th>
+                            <th>Номер замовлення</th>
                             <th>Дата створення</th>
                             <th>Статус</th>
                             <th>Товари</th>
+                            <th>Вартість</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,15 +30,12 @@ $this->Title = 'Акаунт';
                                 <td><?= htmlspecialchars($order->id) ?></td>
                                 <td><?= htmlspecialchars($order->created_at) ?></td>
                                 <td><?= htmlspecialchars($order->status) ?></td>
-                                <td>
-                                    <ul>
-                                        <?php foreach ($order->products as $product): ?>
-                                            <li><?= htmlspecialchars($product->name) ?>
-                                                - <?= htmlspecialchars($product->price) ?> грн.
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
+                                <td><?php foreach ($order->products as $product): ?>
+                                        <?= htmlspecialchars($product->name) ?>
                                 </td>
+                                <td><?= htmlspecialchars($product->price) ?> грн.</td>
+                                    <?php endforeach; ?>
+
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

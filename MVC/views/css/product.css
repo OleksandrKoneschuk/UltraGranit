@@ -31,3 +31,45 @@
 .carousel-control-next-icon::before {
     mask-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23333" viewBox="0 0 16 16"%3E%3Cpath d="M4.646 14.854a.5.5 0 0 1-.707-.708L9.293 8 3.939 2.354a.5.5 0 1 1 .707-.708l6 6a.5.5 0 0 1 0 .708l-6 6z"/%3E%3C/svg%3E');
 }
+
+.review-stars {
+    color: gold;
+    font-size: 18px;
+}
+
+.rating-container {
+    display: flex;
+    align-items: center; /* Вирівнює текст і зірочки */
+    gap: 10px; /* Відстань між текстом і зірками */
+}
+
+.star-rating {
+    direction: rtl; /* Відображення справа наліво */
+    display: flex;
+    gap: 5px;
+}
+
+.star-rating input {
+    display: none; /* Приховуємо стандартні input */
+}
+
+.star-rating label {
+    font-size: 30px;
+    color: transparent; /* Робимо зірочку прозорою */
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    -webkit-text-stroke: 1px gold; /* Додаємо обведення */
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: gold; /* Заповнені зірки */
+    -webkit-text-stroke: 0; /* Видаляємо обведення при наведенні */
+}
+
+.star-rating label:before {
+    content: '\f005'; /* FontAwesome іконка зірки */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}

@@ -6,6 +6,7 @@ use core\Controller;
 use core\Router;
 use MVC\models\Category;
 use MVC\models\Product;
+use MVC\models\ProductReview;
 use MVC\models\Users;
 
 class ProductController extends Controller
@@ -36,9 +37,19 @@ class ProductController extends Controller
     {
         $categoryId = isset($params[0]) ? intval($params[0]) : null;
         $categories = Category::getCategories();
+        $materials = Product::getMaterials();
 
         if ($this->isPost) {
-            $productId = Product::addProduct($this->post->name, $this->post->price, $this->post->short_description, $this->post->description, $this->post->visible, $categoryId);
+            $productId = Product::addProduct(
+                $this->post->name,
+                $categoryId,
+                $this->post->material_id,
+                $this->post->length_cm,
+                $this->post->width_cm,
+                $this->post->height_cm,
+                $this->post->short_description,
+                $this->post->description,
+                $this->post->visible);
 
             $productDir = "files/products/{$productId}/";
             if (!is_dir($productDir)) {
@@ -70,6 +81,7 @@ class ProductController extends Controller
 
         return $this->render(null, [
             'categories' => $categories,
+            'materials' => $materials,
             'category_id' => $categoryId
         ]);
     }
@@ -101,11 +113,50 @@ class ProductController extends Controller
         $product = Product::getProductById($id);
         $photos = Product::getProductPhotos($id);
         $mainPhoto = $product->main_photo;
+        $reviews = ProductReview::getReviewsByProductId($id);
+
+        if ($this->isPost) {
+            $userName = trim($this->post->user_name ?? '');
+            $rating = $this->post->rating ?? null;
+            $reviewText = trim($this->post->review_text ?? '');
+
+            $_SESSION['review_form_data'] = [
+                'user_name' => $userName,
+                'rating' => $rating,
+                'review_text' => $reviewText
+            ];
+
+            // 🛑 Перевірка: Ім'я не може містити цифри
+            if (empty($userName)) {
+                $this->addErrorMessage('Будь ласка, введіть ваше ім\'я.');
+            } elseif (!preg_match('/^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\' -]+$/u', $userName)) {
+                $this->addErrorMessage('Ім\'я може містити тільки літери, пробіли, апострофи або дефіси.');
+            }
+
+            // 🛑 Перевірка: Оцінка має бути числом від 1 до 5
+            if (!is_numeric($rating) || $rating < 1 || $rating > 5) {
+                $this->addErrorMessage('Некоректний рейтинг. Виберіть оцінку від 1 до 5.');
+            }
+
+            // 🛑 Перевірка: Текст відгуку обов'язковий
+            if (empty($reviewText)) {
+                $this->addErrorMessage('Будь ласка, напишіть свій відгук.');
+            }
+
+            // ✅ Якщо немає помилок, додаємо відгук
+            if (empty($this->errorMessages)) {
+                ProductReview::addReview($id, $userName, $rating, $reviewText);
+                unset($_SESSION['review_form_data']); // Очищаємо збережені дані після успішного додавання
+                $this->addSuccessMessage('Ваш відгук додано.');
+                return $this->redirect('/product/view/' . $id . '#review-form');
+            }
+        }
 
         return $this->render(null, [
             'product' => $product,
             'photos' => $photos,
-            'mainPhoto' => $mainPhoto
+            'mainPhoto' => $mainPhoto,
+            'reviews' => $reviews
         ]);
     }
 
@@ -114,6 +165,7 @@ class ProductController extends Controller
         $productId = intval($params[0]);
         $product = Product::getProductById($productId);
         $categories = Category::getCategories();
+        $materials = Product::getMaterials();
 
         if (!Users::isAdmin($this->user)) {
             $this->router->error(403, 'Ви не маєте дозволу на редагування товару.');
@@ -129,6 +181,10 @@ class ProductController extends Controller
             $name = $this->post->name ?? '';
             $price = $this->post->price ?? '';
             $category_id = $this->post->category_id ?? '';
+            $material_id = $this->post->material_id ?? '';
+            $length_cm = $this->post->length_cm ?? '';
+            $width_cm = $this->post->width_cm ?? '';
+            $height_cm = $this->post->height_cm ?? '';
             $short_description = $this->post->short_description ?? '';
             $description = $this->post->description ?? '';
             $mainPhoto = $_FILES['main_photo'] ?? null;
@@ -143,6 +199,18 @@ class ProductController extends Controller
             if (strlen($category_id) === 0 || !is_numeric($category_id)) {
                 $this->addErrorMessage('Категорія продукту не вказана або вказана неправильно!');
             }
+            if (strlen($material_id) === 0 || !is_numeric($material_id)) {
+                $this->addErrorMessage('Матеріал продукту не вказаний або вказаний неправильно!');
+            }
+            if (strlen($length_cm) === 0) {
+                $this->addErrorMessage('Довжина не може бути 0!');
+            }
+            if (strlen($width_cm) === 0) {
+                $this->addErrorMessage('Ширина не може бути 0!');
+            }
+            if (strlen($height_cm) === 0) {
+                $this->addErrorMessage('Товщина не може бути 0!');
+            }
             if (strlen($short_description) === 0) {
                 $this->addErrorMessage('Короткий опис продукту не вказано!');
             }
@@ -155,6 +223,10 @@ class ProductController extends Controller
                     'name' => $name,
                     'price' => $price,
                     'category_id' => $category_id,
+                    'material_id' => $material_id,
+                    'length_cm' => $length_cm,
+                    'width_cm' => $width_cm,
+                    'height_cm' => $height_cm,
                     'short_description' => $short_description,
                     'description' => $description,
                     'visible' => $this->post->visible ? 1 : 0
@@ -184,7 +256,8 @@ class ProductController extends Controller
 
         return $this->render(null, [
             'product' => $product,
-            'categories' => $categories
+            'categories' => $categories,
+            'materials' => $materials
         ]);
     }
 

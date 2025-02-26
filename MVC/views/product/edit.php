@@ -1,5 +1,6 @@
 <?php
 /** @var array $categories
+ * @var array $materials
  * @var stdClass $product */
 
 $this->Title = 'Редагування продукту';
@@ -40,6 +41,59 @@ $this->Title = 'Редагування продукту';
                     <?php endforeach; ?>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="material_id" class="form-label">Матеріал:</label>
+                <select class="form-control" id="material_id" name="material_id" required>
+                    <?php foreach ($materials as $material) : ?>
+                        <option value="<?= $material->id ?>" <?= $material->id == $product->material_id ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($material->name) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="length_cm" class="form-label">Довжина (см):</label>
+                    <input type="number" step="1" id="length_cm" name="length_cm" value="<?= htmlspecialchars($product->length_cm) ?>" class="form-control" list="length-options" required>
+                    <datalist id="length-options">
+                        <option value="50">
+                        <option value="60">
+                        <option value="100">
+                        <option value="120">
+                        <option value="150">
+                        <option value="160">
+                        <option value="180">
+                        <option value="200">
+                    </datalist>
+                </div>
+
+                <div class="col">
+                    <label for="width_cm" class="form-label">Ширина (см):</label>
+                    <input type="number" step="1" id="width_cm" name="width_cm" value="<?= htmlspecialchars($product->width_cm) ?>" class="form-control" list="width-options" required>
+                    <datalist id="width-options">
+                        <option value="30">
+                        <option value="50">
+                        <option value="60">
+                        <option value="800">
+                        <option value="90">
+                        <option value="120">
+                    </datalist>
+                </div>
+
+                <div class="col">
+                    <label for="height_cm" class="form-label">Товщина (см):</label>
+                    <input type="number" step="1" id="height_cm" name="height_cm" value="<?= htmlspecialchars($product->height_cm) ?>" class="form-control" list="height-options" required>
+                    <datalist id="height-options">
+                        <option value="5">
+                        <option value="8">
+                        <option value="10">
+                        <option value="12">
+                    </datalist>
+                </div>
+            </div>
+
+
             <div class="mb-3">
                 <label for="short_description" class="form-label">Короткий опис</label>
                 <textarea class="form-control ckeditor" name="short_description" id="short_description"><?= htmlspecialchars($product->short_description) ?></textarea>

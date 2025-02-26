@@ -16,16 +16,41 @@ class Product extends Model
         return Core::get()->db->select(self::$tableName, '*');
     }
 
-    public static function addProduct($name, $price, $shortDescription, $description, $visible, $categoryId)
+    public static function addProduct($name, $categoryId, $materialId, $lengthCm, $widthCm, $heightCm, $shortDescription, $description, $visible)
     {
         return Core::get()->db->insert('product', [
             'name' => $name,
-            'price' => $price,
+            'category_id' => $categoryId,
+            'material_id' => $materialId,
+            'length_cm' => $lengthCm,
+            'width_cm' => $widthCm,
+            'height_cm' => $heightCm,
             'short_description' => $shortDescription,
             'description' => $description,
-            'visible' => $visible,
-            'category_id' => $categoryId
+            'visible' => $visible
         ]);
+    }
+
+    public static function updateProduct($id, $row)
+    {
+        $fieldsList = ['name', 'price', 'category_id', 'materialId', 'lengthCm', 'widthCm', 'heightCm', 'short_description', 'description', 'visible', 'main_photo'];
+        $row = Utils::filterArray($row, $fieldsList);
+
+        $currentProduct = self::getProductById($id);
+        $currentMainPhoto = $currentProduct->main_photo;
+
+        Core::get()->db->update(self::$tableName, $row, [
+            'id' => $id
+        ]);
+
+        if (!empty($row['main_photo']) && $currentMainPhoto && $currentMainPhoto !== $row['main_photo']) {
+            self::deletePhoto($currentMainPhoto);
+        }
+    }
+
+    public static function getMaterials()
+    {
+        return Core::get()->db->select('materials', '*');
     }
 
     public static function updateProductMainPhoto($productId, $mainPhotoPath)
@@ -146,23 +171,6 @@ class Product extends Model
         return true;
     }
 
-    public static function updateProduct($id, $row)
-    {
-        $fieldsList = ['name', 'price', 'short_description', 'description', 'category_id', 'visible', 'main_photo'];
-        $row = Utils::filterArray($row, $fieldsList);
-
-        $currentProduct = self::getProductById($id);
-        $currentMainPhoto = $currentProduct->main_photo;
-
-        Core::get()->db->update(self::$tableName, $row, [
-            'id' => $id
-        ]);
-
-        if (!empty($row['main_photo']) && $currentMainPhoto && $currentMainPhoto !== $row['main_photo']) {
-            self::deletePhoto($currentMainPhoto);
-        }
-    }
-
     public static function deletePhoto($photoPath)
     {
         if (file_exists($photoPath)) {
@@ -221,5 +229,10 @@ class Product extends Model
         return Core::get()->db->select(self::$tableName, '*', $where, array_merge($order, [
             'LIMIT' => [$offset, $limit]
         ]));
+    }
+
+    public static function updateCurrency($newRate)
+    {
+        return Core::get()->db->update('currency', ['exchange_rate' => $newRate, 'updated_at' => date('Y-m-d H:i:s')], ['currency_code' => 'USD']);
     }
 }

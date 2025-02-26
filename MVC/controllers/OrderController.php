@@ -7,6 +7,8 @@ use core\Router;
 use MVC\models\Order;
 use MVC\models\Basket;
 use MVC\models\Users;
+use Exception;
+use core\TelegramBot;
 
 class OrderController extends Controller
 {
@@ -45,30 +47,36 @@ class OrderController extends Controller
 
     public function actionSubmit()
     {
-        header('Content-Type: application/json');
+        try {
+            header('Content-Type: application/json');
 
-        $data = [
-            'user_id' => $this->user ? $this->user->id : null,
-            'last_name' => $this->post->surname ?? null,
-            'first_name' => $this->post->name ?? null,
-            'middle_name' => $this->post->patronymic ?? null,
-            'phone_number' => $this->post->phone ?? null,
-            'email' => $this->post->email ?? null,
-            'nova_poshta' => $this->post->novaposhta ?? null,
-        ];
+            $data = [
+                'user_id' => $this->user ? $this->user->id : null,
+                'last_name' => $this->post->surname ?? null,
+                'first_name' => $this->post->name ?? null,
+                'middle_name' => $this->post->patronymic ?? null,
+                'phone_number' => $this->post->phone ?? null,
+                'email' => $this->post->email ?? null,
+                'nova_poshta' => $this->post->novaposhta ?? null,
+                'comment' => $this->post->comment ?? null
+            ];
 
-        error_log("OrderController::actionSubmit - Submitted data: " . json_encode($data));
+            $result = Order::createOrder($data);
 
-        $result = Order::createOrder($data);
+            if ($result['success']) {
+                $_SESSION['order_id'] = $result['order_id'];
+                $orderId = $result['order_id'];
 
-        error_log("OrderController::actionSubmit - Result: " . json_encode($result));
+                TelegramBot::sendNewOrderNotification($orderId);
 
-        if ($result['success']) {
-            $_SESSION['order_id'] = $result['order_id'];
-            echo json_encode(['success' => true]);
-        } else {
-            echo json_encode(['success' => false, 'error' => $result['error']]);
+                echo json_encode(['success' => true]);
+            } else {
+                throw new Exception($result['error']);
+            }
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'error' => $e->getMessage()]);
         }
         exit();
     }
 }
+

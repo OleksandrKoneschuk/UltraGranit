@@ -1,7 +1,11 @@
 <?php
 namespace MVC\models;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 use core\Core;
+use TelegramBot\Api\BotApi;
+use Exception;
 
 class Order
 {
@@ -43,10 +47,11 @@ class Order
                 error_log("Order::createOrder - Added product to order: " . json_encode($orderProductData));
             }
 
+
             Basket::clearBasket($userId);
             error_log("Order::createOrder - Cleared basket for user ID: " . $userId);
-
             $db->commit();
+
             return ['success' => true, 'order_id' => $orderId];
         } catch (\Exception $e) {
             error_log("Order::createOrder - Exception: " . $e->getMessage());
@@ -86,5 +91,9 @@ class Order
     {
         $rows = Core::get()->db->select(self::$orderProductsTableName, 'SUM(price) as total_price', ['order_id' => $orderId]);
         return $rows[0]->total_price ?? 0;
+    }
+
+    public static function getAll() {
+        return Core::get()->db->select("orders", "*");
     }
 }

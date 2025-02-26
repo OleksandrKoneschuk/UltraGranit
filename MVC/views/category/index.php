@@ -2,10 +2,10 @@
 /** @var array $rows */
 use MVC\models\Users;
 
-$this->Title = 'Категорії'; ?>
+$this->Title = 'Каталог'; ?>
 
 <main>
-    <h1 class="text-center mb-5"> Категорії</h1>
+    <h1 class="text-center mb-5"> Каталог</h1>
 
     <link rel="stylesheet" href="/MVC/views/css/category.css">
     <div class="container">

@@ -1,5 +1,6 @@
 <?php
 /** @var array $categories
+ * @var array $materials
  * @var int|null $category_id */
 
 $this->Title = 'Додавання продукту';
@@ -26,10 +27,8 @@ $this->Title = 'Додавання продукту';
                 <label for="name" class="form-label">Назва продукту</label>
                 <input type="text" class="form-control" name="name" id="name" >
             </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Ціна</label>
-                <input type="number" class="form-control" name="price" id="price" >
-            </div>
+
+
             <div class="mb-3">
                 <label for="category_id" class="form-label">Категорія</label>
                 <select class="form-control" name="category_id" id="category_id" >
@@ -39,6 +38,57 @@ $this->Title = 'Додавання продукту';
                     <?php endforeach; ?>
                 </select>
             </div>
+
+            <div class="mb-3">
+                <label for="material_id">Матеріал:</label>
+                <select id="material_id" name="material_id" required>
+                    <?php foreach ($materials as $material): ?>
+                        <option value="<?= $material->id ?>"><?= htmlspecialchars($material->name) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="length_cm" class="form-label">Довжина (см):</label>
+                    <input type="number" step="1" id="length_cm" name="length_cm" class="form-control" list="length-options" required>
+                    <datalist id="length-options">
+                        <option value="50">
+                        <option value="60">
+                        <option value="100">
+                        <option value="120">
+                        <option value="150">
+                        <option value="160">
+                        <option value="180">
+                        <option value="200">
+                    </datalist>
+                </div>
+
+                <div class="col">
+                    <label for="width_cm" class="form-label">Ширина (см):</label>
+                    <input type="number" step="1" id="width_cm" name="width_cm" class="form-control" list="width-options" required>
+                    <datalist id="width-options">
+                        <option value="30">
+                        <option value="50">
+                        <option value="60">
+                        <option value="800">
+                        <option value="90">
+                        <option value="120">
+                    </datalist>
+                </div>
+
+                <div class="col">
+                    <label for="height_cm" class="form-label">Товщина (см):</label>
+                    <input type="number" step="1" id="height_cm" name="height_cm" class="form-control" list="height-options" required>
+                    <datalist id="height-options">
+                        <option value="5">
+                        <option value="8">
+                        <option value="10">
+                        <option value="12">
+                    </datalist>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="short_description" class="form-label">Короткий опис</label>
                 <textarea class="form-control ckeditor" name="short_description" id="short_description" ></textarea>
@@ -47,37 +97,10 @@ $this->Title = 'Додавання продукту';
                 <label for="description" class="form-label">Опис</label>
                 <textarea class="form-control ckeditor" name="description" id="description" ></textarea>
             </div>
+
+
             <div class="mb-3">
-                <label for="color" class="form-label">Колір</label>
-                <select class="form-control" name="color" id="color">
-                    <option value="green">Зелений</option>
-                    <option value="brown">Коричневий</option>
-                    <option value="gray">Сірий</option>
-                    <option value="red">Червоний</option>
-                    <option value="black">Чорний</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="purpose" class="form-label">Призначення</label>
-                <select class="form-control" name="purpose" id="purpose">
-                    <option value="family">Сімейні</option>
-                    <option value="mother">Для матері</option>
-                    <option value="father">Для батька</option>
-                    <option value="husband">Для чоловіка</option>
-                    <option value="wife">Для дружини</option>
-                    <option value="child">Дитячі</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="stone" class="form-label">Камінь</label>
-                <select class="form-control" name="stone" id="stone">
-                    <option value="granite">Граніт</option>
-                    <option value="gabbro">Габро</option>
-                    <option value="marble">Мармур</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="visible" class="form-label">Видимість</label>
+                <label for="visible" class="form-label">Показувати на сайті:</label>
                 <input type="checkbox" name="visible" id="visible" checked>
             </div>
             <div class="mb-3">

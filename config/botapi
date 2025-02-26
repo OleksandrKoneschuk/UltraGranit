@@ -1,0 +1,26 @@
+Bot Token
+7872489450:AAFY_H1TopVR9op3w3iHQc5ql34PwUL9p6s
+
+NgRok Token
+2sLfdhPT7KZFpGMoHoyxs7vl4Ad_2BjFpzLS1goK4SaFeJmR
+
+
+https://54ed-46-219-245-142.ngrok-free.app
+
+
+Встановлення Webhook у Telegram
+https://api.telegram.org/bot7872489450:AAFY_H1TopVR9op3w3iHQc5ql34PwUL9p6s/setWebhook?url=https://54ed-46-219-245-142.ngrok-free.app/bot.php
+
+
+curl -F "url=https://54ed-46-219-245-142.ngrok-free.app/bot.php" "https://api.telegram.org/bot7872489450:AAFY_H1TopVR9op3w3iHQc5ql34PwUL9p6s/setWebhook"
+
+curl "https://api.telegram.org/bot7872489450:AAFY_H1TopVR9op3w3iHQc5ql34PwUL9p6s/getWebhookInfo"
+
+
+https://api.telegram.org/bot7872489450:AAFY_H1TopVR9op3w3iHQc5ql34PwUL9p6s/getWebhookInfo
+
+
+curl "https://api.telegram.org/bot7872489450:AAFY_H1TopVR9op3w3iHQc5ql34PwUL9p6s/setWebhook?url=https://6161-46-219-241-114.ngrok-free.app/bot.php"
+
+
+ngrok http --host-header=ultragranit 80

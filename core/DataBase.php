@@ -168,5 +168,15 @@ class DataBase
         $this->pdo->rollBack();
     }
 
+    public function inTransaction()
+    {
+        return $this->pdo->inTransaction(); // Перевіряє, чи є активна транзакція
+    }
+
+    public function lastInsertId()
+    {
+        return $this->pdo->lastInsertId(); // Отримує останній вставлений ID
+    }
+
 
 }

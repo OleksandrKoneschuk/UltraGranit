@@ -23,8 +23,12 @@
                 <input type="email" class="form-control" id="email" name="email" value="<?= isset($user) ? htmlspecialchars($user['email']) : '' ?>" >
             </div>
             <div class="mb-3">
-                <label for="novaposhta" class="form-label">Відділення Нової Пошти</label>
+                <label for="novaposhta" class="form-label">Спосіб доставки</label>
                 <input type="text" class="form-control" id="novaposhta" name="novaposhta" required>
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Коментарій до замовлення</label>
+                <input type="text" class="form-control" id="comment" name="comment">
             </div>
             <h3>Товари в кошику</h3>
             <div id="basket-products">

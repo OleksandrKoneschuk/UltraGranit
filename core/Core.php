@@ -2,6 +2,8 @@
 
 namespace core;
 
+use core\Template;
+
 class Core
 {
     public $defaultLayoutPath = 'MVC/views/layout/index.php';
@@ -23,7 +25,9 @@ class Core
         $password = Config::get()->dbPassword;
         $this->db = new DataBase($host, $name, $login, $password);
         $this->session = new Session();
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
     public function run($route) {

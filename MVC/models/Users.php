@@ -68,6 +68,7 @@ class Users extends Model
         return Core::get()->session->get('user');
     }
 
+
     public static function RegisterUser($first_name, $last_name, $middle_name, $phone_number, $email, $password)
     {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

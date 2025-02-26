@@ -1,0 +1,192 @@
+[2025-02-02 20:40:24] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"34"}
+[2025-02-02 20:40:24] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 140
+[2025-02-02 20:42:16] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043c.\u041a\u043e\u0440\u043e\u0441\u0442\u0438\u0448\u0456\u0432, \u0432\u0456\u0434\u0434\u0456\u043b\u0435\u043d\u043d\u044f 1"}
+[2025-02-02 20:42:16] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 141
+[2025-02-02 20:42:33] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u0444\u0432\u0456\u0430\u0444\u0456\u0432"}
+[2025-02-02 20:42:33] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 142
+[2025-02-02 20:42:49] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"asdsa"}
+[2025-02-02 20:42:49] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 143
+2025-02-02 20:43:24 - Отримані дані: {"update_id":248476013,
+"message":{"message_id":682,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1738529004,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+ℹ️ /start: Отримано запит від 684939773 (Oleksandr @zipper16)
+✅ Користувач знайдений: Олександр Конещук (ID: 1)
+2025-02-02 20:43:25 - Отримані дані: {"update_id":248476014,
+"message":{"message_id":684,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1738529006,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-02 20:43:26 - Отримані дані: {"update_id":248476015,
+"message":{"message_id":686,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1738529007,"text":"/orders","entities":[{"offset":0,"length":7,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders (не номер)
+[2025-02-02 20:50:18] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u0444\u0456\u0432\u0456"}
+[2025-02-02 20:50:18] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 144
+📤 Викликаємо sendNewOrderNotification для замовлення ID: 144
+✅ Отримані товари: Array
+(
+)
+
+⚠️ Немає менеджерів/адміністраторів для повідомлення.
+[2025-02-02 20:54:10] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043c.\u041a\u043e\u0440\u043e\u0441\u0442\u0438\u0448\u0456\u0432, \u0432\u0456\u0434\u0434\u0456\u043b\u0435\u043d\u043d\u044f 1"}
+[2025-02-02 20:54:10] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 145
+📤 Викликаємо sendNewOrderNotification для замовлення ID: 145
+✅ Отримані товари: Array
+(
+)
+
+⚠️ Немає менеджерів/адміністраторів для повідомлення.
+[2025-02-02 20:56:26] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u0444\u0456\u0432"}
+[2025-02-02 20:56:26] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 146
+📤 Викликаємо sendNewOrderNotification для замовлення ID: 146
+✅ Отримані товари: Array
+(
+)
+
+⚠️ Немає менеджерів/адміністраторів для повідомлення.
+[2025-02-02 20:56:49] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043f\u0440\u043e"}
+[2025-02-02 20:56:49] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 147
+📤 Викликаємо sendNewOrderNotification для замовлення ID: 147
+✅ Отримані товари: 
+⚠️ Немає менеджерів/адміністраторів для повідомлення.
+[2025-02-02 20:57:06] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u0430\u043f\u0440"}
+[2025-02-02 20:57:06] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 148
+📤 Викликаємо sendNewOrderNotification для замовлення ID: 148
+⚠️ Немає менеджерів/адміністраторів для повідомлення.
+[2025-02-02 20:57:53] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043f\u0432\u0430\u043f"}
+[2025-02-02 20:57:53] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 149
+📤 Викликаємо sendNewOrderNotification для замовлення ID: 149
+[2025-02-02 20:58:28] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u0456\u0432"}
+[2025-02-02 20:58:28] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 150
+[2025-02-02 21:02:11] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u0444\u0456\u0432"}
+[2025-02-02 21:02:11] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 151
+[2025-02-02 21:03:46] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043c.\u041a\u043e\u0440\u043e\u0441\u0442\u0438\u0448\u0456\u0432, \u0432\u0456\u0434\u0434\u0456\u043b\u0435\u043d\u043d\u044f 1"}
+[2025-02-02 21:03:46] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 152
+[2025-02-02 21:11:23] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043c.\u041a\u043e\u0440\u043e\u0441\u0442\u0438\u0448\u0456\u0432, \u0432\u0456\u0434\u0434\u0456\u043b\u0435\u043d\u043d\u044f 1"}
+[2025-02-02 21:11:23] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 1
+2025-02-02 22:56:45 - Отримані дані: {"update_id":248476016,
+"message":{"message_id":692,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1738537005,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+ℹ️ /start: Отримано запит від 684939773 (Oleksandr @zipper16)
+✅ Користувач знайдений: Олександр Конещук (ID: 1)
+2025-02-02 22:56:46 - Отримані дані: {"update_id":248476017,
+"message":{"message_id":694,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1738537007,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-02 22:56:50 - Отримані дані: {"update_id":248476018,
+"message":{"message_id":696,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1738537011,"text":"/status_auto_update","entities":[{"offset":0,"length":19,"type":"bot_command"}]}}
+🔍 Команда отримана: /status_auto_update (не номер)
+2025-02-02 22:56:52 - Отримані дані: {"update_id":248476019,
+"message":{"message_id":698,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1738537013,"text":"/enable_auto_update","entities":[{"offset":0,"length":19,"type":"bot_command"}]}}
+🔍 Команда отримана: /enable_auto_update (не номер)
+2025-02-02 22:58:36 - Отримані дані: {"update_id":248476020,
+"message":{"message_id":700,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1738537117,"text":"/disable_auto_update","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}
+🔍 Команда отримана: /disable_auto_update (не номер)
+2025-02-08 17:07:59 - Отримані дані: {"update_id":248476021,
+"message":{"message_id":702,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739034479,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+ℹ️ /start: Отримано запит від 684939773 (Oleksandr @zipper16)
+✅ Користувач знайдений: Олександр Конещук (ID: 1)
+2025-02-08 17:08:02 - Отримані дані: {"update_id":248476022,
+"message":{"message_id":704,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739034482,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-08 17:08:05 - Отримані дані: {"update_id":248476023,
+"message":{"message_id":706,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739034485,"text":"/enable_auto_update","entities":[{"offset":0,"length":19,"type":"bot_command"}]}}
+🔍 Команда отримана: /enable_auto_update (не номер)
+2025-02-08 17:11:50 - Отримані дані: {"update_id":248476024,
+"message":{"message_id":708,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739034711,"text":"/status_auto_update","entities":[{"offset":0,"length":19,"type":"bot_command"}]}}
+🔍 Команда отримана: /status_auto_update (не номер)
+2025-02-08 17:11:53 - Отримані дані: {"update_id":248476025,
+"message":{"message_id":710,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739034713,"text":"/disable_auto_update","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}
+🔍 Команда отримана: /disable_auto_update (не номер)
+2025-02-08 17:12:12 - Отримані дані: {"update_id":248476026,
+"message":{"message_id":712,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739034732,"text":"/enable_auto_update","entities":[{"offset":0,"length":19,"type":"bot_command"}]}}
+🔍 Команда отримана: /enable_auto_update (не номер)
+2025-02-08 18:51:59 - Отримані дані: {"update_id":248476027,
+"message":{"message_id":714,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739040720,"text":"/enable_auto_update","entities":[{"offset":0,"length":19,"type":"bot_command"}]}}
+🔍 Команда отримана: /enable_auto_update (не номер)
+2025-02-08 18:53:00 - Отримані дані: {"update_id":248476028,
+"message":{"message_id":716,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739040780,"text":"/orders","entities":[{"offset":0,"length":7,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders (не номер)
+2025-02-08 18:53:08 - Отримані дані: {"update_id":248476029,
+"message":{"message_id":718,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739040788,"text":"/orders_list","entities":[{"offset":0,"length":12,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders_list (не номер)
+2025-02-08 18:53:12 - Отримані дані: {"update_id":248476030,
+"message":{"message_id":719,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739040792,"text":"/admin","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+🔍 Команда отримана: /admin (не номер)
+2025-02-08 18:53:38 - Отримані дані: {"update_id":248476031,
+"message":{"message_id":721,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739040818,"text":"/orders","entities":[{"offset":0,"length":7,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders (не номер)
+2025-02-08 18:53:46 - Отримані дані: {"update_id":248476032,
+"message":{"message_id":723,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739040826,"text":"/orders","entities":[{"offset":0,"length":7,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders (не номер)
+2025-02-08 18:54:39 - Отримані дані: {"update_id":248476033,
+"message":{"message_id":725,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739040879,"text":"https://54ed-46-219-245-142.ngrok-free.app","entities":[{"offset":0,"length":42,"type":"url"}],"link_preview_options":{"url":"https://54ed-46-219-245-142.ngrok-free.app/"}}}
+[2025-02-08 19:21:54] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043c.\u041a\u043e\u0440\u043e\u0441\u0442\u0438\u0448\u0456\u0432, \u0432\u0456\u0434\u0434\u0456\u043b\u0435\u043d\u043d\u044f 12"}
+[2025-02-08 19:21:54] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 2
+2025-02-08 19:22:16 - Отримані дані: {"update_id":248476034,
+"message":{"message_id":728,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739042536,"text":"/orders","entities":[{"offset":0,"length":7,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders (не номер)
+2025-02-08 19:22:34 - Отримані дані: {"update_id":248476035,
+"message":{"message_id":730,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739042555,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+ℹ️ /start: Отримано запит від 684939773 (Oleksandr @zipper16)
+✅ Користувач знайдений: Олександр Конещук (ID: 1)
+2025-02-08 19:22:36 - Отримані дані: {"update_id":248476036,
+"message":{"message_id":732,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739042556,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-08 19:22:37 - Отримані дані: {"update_id":248476037,
+"message":{"message_id":734,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739042557,"text":"/products","entities":[{"offset":0,"length":9,"type":"bot_command"}]}}
+🔍 Команда отримана: /products (не номер)
+2025-02-08 19:22:38 - Отримані дані: {"update_id":248476038,
+"message":{"message_id":736,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739042559,"text":"/orders","entities":[{"offset":0,"length":7,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders (не номер)
+2025-02-08 19:31:03 - Отримані дані: {"update_id":248476039,
+"message":{"message_id":738,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739043063,"text":"/orders","entities":[{"offset":0,"length":7,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders (не номер)
+2025-02-08 19:31:08 - Отримані дані: {"update_id":248476040,
+"message":{"message_id":740,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739043068,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-08 19:31:09 - Отримані дані: {"update_id":248476041,
+"message":{"message_id":742,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739043070,"text":"/products","entities":[{"offset":0,"length":9,"type":"bot_command"}]}}
+🔍 Команда отримана: /products (не номер)
+2025-02-08 19:31:11 - Отримані дані: {"update_id":248476042,
+"message":{"message_id":744,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739043071,"text":"/get_currency","entities":[{"offset":0,"length":13,"type":"bot_command"}]}}
+🔍 Команда отримана: /get_currency (не номер)
+2025-02-08 20:01:49 - Отримані дані: {"update_id":248476043,
+"message":{"message_id":746,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739044909,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-08 20:01:52 - Отримані дані: {"update_id":248476044,
+"message":{"message_id":748,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739044912,"text":"/products","entities":[{"offset":0,"length":9,"type":"bot_command"}]}}
+🔍 Команда отримана: /products (не номер)
+2025-02-08 20:01:55 - Отримані дані: {"update_id":248476045,
+"message":{"message_id":750,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739044916,"text":"/orders","entities":[{"offset":0,"length":7,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders (не номер)
+2025-02-08 20:01:57 - Отримані дані: {"update_id":248476046,
+"message":{"message_id":752,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739044917,"text":"/get_currency","entities":[{"offset":0,"length":13,"type":"bot_command"}]}}
+🔍 Команда отримана: /get_currency (не номер)
+2025-02-08 20:02:51 - Отримані дані: {"update_id":248476047,
+"message":{"message_id":754,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739044971,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-08 20:03:18 - Отримані дані: {"update_id":248476048,
+"message":{"message_id":756,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739044998,"text":"/orders_list","entities":[{"offset":0,"length":12,"type":"bot_command"}]}}
+🔍 Команда отримана: /orders_list (не номер)
+2025-02-08 20:03:21 - Отримані дані: {"update_id":248476049,
+"message":{"message_id":757,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045001,"text":"/admin","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+🔍 Команда отримана: /admin (не номер)
+2025-02-08 20:03:41 - Отримані дані: {"update_id":248476050,
+"message":{"message_id":759,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045021,"text":"/assign_manager","entities":[{"offset":0,"length":15,"type":"bot_command"}]}}
+🔍 Команда отримана: /assign_manager (не номер)
+2025-02-08 20:03:46 - Отримані дані: {"update_id":248476051,
+"message":{"message_id":761,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045027,"reply_to_message":{"message_id":760,"from":{"id":7872489450,"is_bot":true,"first_name":"UltraGranitBot","username":"UltraGranitHelperBot"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045022,"text":"\ud83d\udc64 \u0412\u0432\u0435\u0434\u0456\u0442\u044c ID \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u044f\u043a\u043e\u043c\u0443 \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0438\u0442\u0438 \u0440\u043e\u043b\u044c \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0430:","entities":[{"offset":11,"length":14,"type":"bold"}]},"text":"5"}}
+✅ Користувач #5 отримав роль менеджер
+2025-02-08 20:04:16 - Отримані дані: {"update_id":248476052,
+"message":{"message_id":763,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045056,"text":"/assign_user","entities":[{"offset":0,"length":12,"type":"bot_command"}]}}
+🔍 Команда отримана: /assign_user (не номер)
+2025-02-08 20:04:18 - Отримані дані: {"update_id":248476053,
+"message":{"message_id":765,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045058,"reply_to_message":{"message_id":764,"from":{"id":7872489450,"is_bot":true,"first_name":"UltraGranitBot","username":"UltraGranitHelperBot"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045057,"text":"\ud83d\udc64 \u0412\u0432\u0435\u0434\u0456\u0442\u044c ID \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u0449\u043e\u0431 \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438 \u0439\u043e\u043c\u0443 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u0438\u0439 \u0440\u0456\u0432\u0435\u043d\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u0443:","entities":[{"offset":11,"length":14,"type":"bold"}]},"text":"5"}}
+✅ Користувач #5 отримав роль звичайний користувач
+2025-02-08 20:04:20 - Отримані дані: {"update_id":248476054,
+"message":{"message_id":767,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045060,"text":"/set_currency","entities":[{"offset":0,"length":13,"type":"bot_command"}]}}
+🔍 Команда отримана: /set_currency (не номер)
+2025-02-08 20:04:24 - Отримані дані: {"update_id":248476055,
+"message":{"message_id":769,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045064,"text":"/disable_auto_update","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}
+🔍 Команда отримана: /disable_auto_update (не номер)
+2025-02-08 20:04:28 - Отримані дані: {"update_id":248476056,
+"message":{"message_id":771,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045068,"text":"/enable_auto_update","entities":[{"offset":0,"length":19,"type":"bot_command"}]}}
+🔍 Команда отримана: /enable_auto_update (не номер)
+[2025-02-08 20:05:26] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043c.\u0416\u0438\u0442\u043e\u043c\u0438\u0440, \u0432\u0456\u0434\u0434\u0456\u043b\u0435\u043d\u043d\u044f 1"}
+[2025-02-08 20:05:26] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 3
+[2025-02-24 23:34:42] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u0444\u0432\u0456\u0430\u0444\u0456\u0432","comment":"\u0425\u043e\u0447\u0443 \u0449\u043e\u0441\u044c \u0442\u0430\u043c"}
