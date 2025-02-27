@@ -35,20 +35,21 @@ class Router
                 array_splice($parts, 0, 2);
                 return $controllerObject->$method($parts);
             } else {
-                return $this->error(404, 'Сторінку не знайдено...');
+                return $this->error(404, 'Неіснуюча стоірнка!','Сторінку не знайдено...');
             }
         } else {
-            return $this->error(404, 'Сторінку не знайдено...');
+            return $this->error(404, 'Неіснуюча стоірнка!','Сторінку не знайдено...');
         }
     }
 
     public function done(){
     }
 
-    public function error($code, $message = '') : void {
+    public function error($code, $header = '',$message = '') : void {
         http_response_code($code);
         $this->render('error', [
             'errorCode' => $code,
+            'header' => $header,
             'errorMessage' => $message
         ]);
     }

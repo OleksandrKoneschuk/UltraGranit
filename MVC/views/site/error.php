@@ -1,5 +1,6 @@
 <?php
 /** @var int $errorCode */
+/**@var string $header */
 /** @var string $errorMessage */
 ?>
 
@@ -21,6 +22,7 @@
             </svg>
             <div class="text-start">
                 <h1 class="fs-1">Error <?= htmlspecialchars($errorCode) ?></h1>
+                <h4 class="fs-1"><?= htmlspecialchars($header) ?></h4>
                 <p class="mb-2"><?= htmlspecialchars($errorMessage) ?></p>
             </div>
         </div>

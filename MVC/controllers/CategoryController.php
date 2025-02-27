@@ -9,7 +9,6 @@ use MVC\models\Category;
 use MVC\models\Product;
 use MVC\models\Users;
 
-$user = Users::GetLoggedUserData();
 
 class CategoryController extends Controller
 {
@@ -133,7 +132,7 @@ class CategoryController extends Controller
     public function actionAdd()
     {
         if (!Users::isAdmin($this->user)) {
-            $this->router->error(403, 'Ви не маєте дозволу на додавання категорії.');
+            $this->router->error(403, 'Відмовлено в доступі!', 'Ви не маєте дозволу на додавання категорії.');
             return;
         }
 
@@ -153,7 +152,7 @@ class CategoryController extends Controller
     {
         $id = intval($params[0]);
         if (!Users::isAdmin($this->user)) {
-            return $this->router->error(403, 'Ви не маєте дозволу на редагування категорії.');
+            return $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на редагування категорії.');
         }
 
         if ($id > 0) {
@@ -170,7 +169,7 @@ class CategoryController extends Controller
             ]);
 
         } else
-            return $this->router->error(403, 'Ви не маєте дозволу на редагування категорії.');
+            return $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на редагування категорії.');
     }
 
     public function actionDelete($params)
@@ -179,7 +178,7 @@ class CategoryController extends Controller
         $yes = isset($params[1]) && $params[1] === 'yes';
 
         if (!Users::isAdmin($this->user)) {
-            return $this->router->error(403, 'Ви не маєте дозволу на видалення категорії.');
+            return $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на видалення категорії.');
         }
 
         if ($id > 0) {
@@ -197,7 +196,7 @@ class CategoryController extends Controller
                 'category' => $category
             ]);
         } else
-            return $this->router->error(403, 'Ви не маєте дозволу на видалення категорії.');
+            return $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на видалення категорії.');
     }
 
     protected function error($code, $message)

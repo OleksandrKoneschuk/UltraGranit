@@ -6,24 +6,29 @@ use core\Controller;
 use core\Core;
 use MVC\models\Order;
 use MVC\models\Product;
+use core\Router;
 use MVC\models\Users;
 use core\CurrencyUpdater;
 
 class AdminController extends Controller
 {
+    protected $user;
+    protected $router;
     public function __construct()
     {
         parent::__construct();
+        $this->user = Users::GetLoggedUserData();
+        $this->router = new Router('site/error');
 
-        // Перевірка прав адміністратора
-        $user = Core::get()->session->get('user');
-        if (!$user || !Users::isAdmin($user)) {
-            return $this->redirect('/');
-        }
     }
 
     public function actionIndex()
     {
+        if (!Users::isAdmin($this->user)) {
+            $this->router->error(403, 'Відмовлено в доступі!','Ви не маєте дозволу доступу до сторінки адміністратора!');
+            return;
+        }
+
         $db = Core::get()->db;
 
         // Отримуємо матеріали

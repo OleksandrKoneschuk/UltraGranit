@@ -38,6 +38,11 @@ class ProductController extends Controller
     {
         $id = intval($params[0]);
         $product = Product::getProductById($id);
+
+        if (!$product) {
+            return $this->redirect("/error/404"); // Перенаправлення на 404
+        }
+
         $photos = Product::getProductPhotos($id);
         $mainPhoto = $product->main_photo;
 
@@ -55,6 +60,11 @@ class ProductController extends Controller
 
     public function actionAdd($params)
     {
+        if (!Users::isAdmin($this->user)) {
+            $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на додавання товару!');
+            return;
+        }
+
         $categoryId = isset($params[0]) ? intval($params[0]) : null;
         $categories = Category::getCategories();
         $materials = Product::getMaterials();
@@ -219,18 +229,23 @@ class ProductController extends Controller
 
     public function actionEdit($params)
     {
+        if (!Users::isAdmin($this->user)) {
+            $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на додавання редагування товару!');
+            return;
+        }
+
         $productId = intval($params[0]);
         $product = Product::getProductById($productId);
         $categories = Category::getCategories();
         $materials = Product::getMaterials();
 
         if (!Users::isAdmin($this->user)) {
-            $this->router->error(403, 'Ви не маєте дозволу на редагування товару.');
+            $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на редагування товару.');
             return;
         }
 
         if (empty($product)) {
-            $this->router->error(404, 'Продукт не знайдено.');
+            $this->router->error(404, 'Неіснуюча стоірнка!', 'Продукт не знайдено.');
             return;
         }
 
@@ -320,6 +335,11 @@ class ProductController extends Controller
 
     public function actionDelete($params)
     {
+        if (!Users::isAdmin($this->user)) {
+            $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на видалення товару!');
+            return;
+        }
+
         $productId = intval($params[0]);
         $confirm = $params[1] ?? null;
 
@@ -346,6 +366,11 @@ class ProductController extends Controller
 
     public function actionDeleteReview()
     {
+        if (!Users::isAdmin($this->user)) {
+            $this->router->error(403,  'Відмовлено в доступі!','Ви не маєте дозволу на видалення відгуку!');
+            return;
+        }
+
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             echo json_encode(['success' => false, 'message' => 'Невірний запит.']);
             exit();
