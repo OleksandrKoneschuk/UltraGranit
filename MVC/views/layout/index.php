@@ -5,6 +5,7 @@
 
 use MVC\models\Users;
 use core\Core;
+
 $user = Core::get()->session->get('user');
 $isAdmin = $user ? Users::isAdmin($user) : false;
 
@@ -31,13 +32,13 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
     <title><?= $Title ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
-
+    <link rel="icon" href="/public/uploads/logo3.png" type="image/x-icon">
+    <link href="/MVC/views/css/styles_templates.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
-    <link rel="icon" href="/public/uploads/logo3.png" type="image/x-icon">
-    <link href="/MVC/views/css/styles_templates.css" rel="stylesheet">
     <script src="/MVC/views/js/basket.js" defer></script>
+    <script src="/MVC/views/js/search.js" defer></script>
 </head>
 <div>
     <div class="wrapper">
@@ -53,33 +54,80 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
 
                 <nav class="nav-menu">
                     <ul class="nav">
-                        <li class="nav-item"><a class="header-link <?= $current_page == '/' ? 'active' : '' ?>" href="/">Головна</a></li>
-                        <li class="nav-item"><a class="header-link <?= strpos($current_page, '/category') === 0 ? 'active' : '' ?>" href="/category/index">Каталог</a></li>
-                        <li class="nav-item"><a class="header-link <?= strpos($current_page, '/about') === 0 ? 'active' : '' ?>" href="/about">Про нас</a></li>
-                        <li class="nav-item"><a class="header-link <?= strpos($current_page, '/contacts') === 0 ? 'active' : '' ?>" href="/contacts">Контакти</a></li>
+                        <li class="nav-item"><a class="header-link <?= $current_page == '/' ? 'active' : '' ?>"
+                                                href="/">Головна</a></li>
+                        <li class="nav-item"><a
+                                    class="header-link <?= strpos($current_page, '/category') === 0 ? 'active' : '' ?>"
+                                    href="/category/index">Каталог</a></li>
+                        <li class="nav-item"><a
+                                    class="header-link <?= strpos($current_page, '/about') === 0 ? 'active' : '' ?>"
+                                    href="/about">Про нас</a></li>
+                        <li class="nav-item"><a
+                                    class="header-link <?= strpos($current_page, '/contacts') === 0 ? 'active' : '' ?>"
+                                    href="/contacts">Контакти</a></li>
 
-                        <!-- Поле пошуку -->
-                        <form class="search-form d-flex align-items-center">
+
+                        <form class="search-form d-flex align-items-center position-relative">
                             <div class="input-group">
-            <span class="input-group-text">
-                <i class="bi bi-search"></i>
-            </span>
-                                <input type="text" class="form-control search-input" placeholder="Пошук..." aria-label="Пошук">
+                                <!-- Іконка пошуку -->
+                                <span class="input-group-text bg-white border-end-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                    </svg>
+                                </span>
+
+                                <!-- Поле введення пошуку -->
+                                <input type="text" id="search-input" class="form-control search-input border-start-0"
+                                       placeholder="Пошук товарів..." aria-label="Пошук" autocomplete="off">
+
+                                <span class="input-group-text bg-white border-end-0" type="button" id="clear-search">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                                    </svg>
+                                </span>
                             </div>
+
+                            <!-- Випадаючий список результатів -->
+                            <div id="search-results"
+                                 class="search-results-list position-absolute w-100 bg-white shadow rounded d-none mt-1"></div>
                         </form>
+
+
+
+                        <!--                        <form class="search-form d-flex align-items-center">-->
+<!--                            <div class="input-group">-->
+<!--                                <span class="input-group-text">-->
+<!--                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+<!--                                         class="bi bi-search" viewBox="0 0 16 16">-->
+<!--                                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>-->
+<!--                                    </svg>-->
+<!--                                </span>-->
+<!--                                <input type="text" id="search-input" class="form-control search-input" placeholder="Пошук..." aria-label="Пошук">-->
+<!--                                <button type="button" id="clear-search" class="btn btn-light d-none">✖</button>-->
+<!--                            </div>-->
+<!--                            <div id="search-results" class="search-results-list position-absolute w-100 bg-white shadow-sm d-none"></div>-->
+<!--                        </form>-->
 
                         <?php if ($isAdmin): ?>
                             <li class="nav-item">
                                 <a class="admin-btn" href="/admin/index">Адмін-панель</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item"><a class="header-link <?= strpos($current_page, '/users/login') === 0 ? 'active' : '' ?>" href="/users/login">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 14 14">
+                        <li class="nav-item"><a
+                                    class="header-link <?= strpos($current_page, '/users/login') === 0 ? 'active' : '' ?>"
+                                    href="/users/login">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                     class="bi bi-person-fill" viewBox="0 0 14 14">
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                                 </svg>
                             </a></li>
-                        <li class="nav-item"><a class="header-link <?= strpos($current_page, '/basket/view') === 0 ? 'active' : '' ?>" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                        <li class="nav-item"><a
+                                    class="header-link <?= strpos($current_page, '/basket/view') === 0 ? 'active' : '' ?>"
+                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                     class="bi bi-cart3" viewBox="0 0 16 16">
                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                                 </svg>
                             </a></li>
@@ -97,9 +145,6 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
                     </ul>
                 </div>
             </div>
-
-
-
 
 
             <div class="usd-rate">
@@ -239,7 +284,6 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
     });
 
 </script>
-
 
 
 </body>

@@ -194,10 +194,155 @@ nav .header-link:hover {
     z-index: 1000;
 }
 
-
 .menu-toggle:hover {
     background: rgba(0, 0, 0, 0.9);
 }
+
+.search-form {
+    max-width: 300px;
+    width: 300px;
+    position: relative;
+    flex-grow: 1;
+}
+
+.search-input {
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.input-group-text {
+    border-radius: 10px 0 0 10px;
+}
+
+#clear-search {
+    border-radius: 0 10px 10px 0;
+}
+
+.search-results-list {
+    position: absolute;
+    top: 2.5em; /* Зміни значення, щоб опустити ще нижче */
+    left: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-top: none;
+    z-index: 1050;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+/* Анімація для плавного показу результатів */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-results-list a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.search-results-list a:last-child {
+    border-bottom: none;
+}
+
+.search-results-list a:hover {
+    background-color: #dcdcdc;
+    color:  #333;
+}
+
+/* Мініатюра товару */
+.search-thumbnail {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+}
+
+.search-category-badge {
+    background-color: #f8f9fa;
+    font-size: 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    white-space: nowrap;
+    border: 1px solid #ddd;
+}
+
+.search-category-badge:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.search-results-list {
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-top: none;
+    z-index: 1050;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.search-products a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.search-products a:hover {
+    background-color: #f8f9fa;
+}
+
+.search-thumbnail {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* 🔥 Підсвічування знайдених слів */
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* 😞 Якщо товарів не знайдено */
+.no-results {
+    font-size: 16px;
+    padding: 10px;
+    color: #777;
+}
+
 
 /* 📱 Телефони (до 768px) - кнопка біля логотипу */
 @media (max-width: 768px) {
@@ -212,6 +357,10 @@ nav .header-link:hover {
         flex-direction: column;
         text-align: center;
         padding: 10px 0;
+    }
+
+    .search-form {
+        max-width: 100%;
     }
 
     .usd-rate {
@@ -290,8 +439,6 @@ nav .header-link:hover {
 
 
 }
-
-
 
 .user-icon {
     width: 24px;

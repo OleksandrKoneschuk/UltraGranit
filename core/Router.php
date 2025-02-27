@@ -30,6 +30,7 @@ class Router
         if (class_exists($controller)){
             $controllerObject = new $controller();
             Core::get()->controllerObject = $controllerObject;
+            $method = 'action' . str_replace('_', '', ucfirst($parts[1]));
             if (method_exists($controllerObject, $method)) {
                 array_splice($parts, 0, 2);
                 return $controllerObject->$method($parts);

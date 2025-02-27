@@ -3,6 +3,7 @@
 namespace MVC\controllers;
 
 use core\Controller;
+use core\Core;
 use core\Router;
 use MVC\models\Category;
 use MVC\models\Product;
@@ -159,6 +160,34 @@ class ProductController extends Controller
             'reviews' => $reviews
         ]);
     }
+
+    public function actionSearchAjax()
+    {
+        $query = htmlspecialchars($_GET['query'] ?? '', ENT_QUOTES, 'UTF-8');
+
+        if (strlen($query) < 2) {
+            echo json_encode(['products' => [], 'categories' => []]);
+            exit();
+        }
+
+        // Пошук категорій
+        $categories = Core::get()->db->search('category', ['name'], $query);
+
+        // Пошук товарів
+        $products = Core::get()->db->search('product', ['name', 'description'], $query);
+
+        $user = Core::get()->session->get('user');
+        $isAdmin = $user ? Users::isAdmin($this->user) : false;
+
+        echo json_encode([
+            'categories' => $categories,
+            'products' => $products,
+            'isAdmin' => $isAdmin
+        ]);
+        exit();
+    }
+
+
 
     public function actionEdit($params)
     {

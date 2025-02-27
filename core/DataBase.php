@@ -1,7 +1,8 @@
 <?php
 
 namespace core;
-
+use PDO;
+use PDOException;
 class DataBase
 {
     public $pdo;
@@ -128,6 +129,35 @@ class DataBase
         }
         $sth->execute();
         return $sth->rowCount();
+    }
+
+    public function search($table, $columns, $query)
+    {
+        $query = trim($query);
+        if (empty($query)) {
+            return [];
+        }
+
+        $query = htmlspecialchars($query, ENT_QUOTES, 'UTF-8');
+
+        $conditions = [];
+        foreach ($columns as $column) {
+            $conditions[] = "($column LIKE :query1 OR SOUNDEX($column) = SOUNDEX(:query2))";
+        }
+
+        $sql = "SELECT * FROM `$table` WHERE " . implode(" OR ", $conditions);
+
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                'query1' => "%$query%",
+                'query2' => $query
+            ]);
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            error_log("Помилка пошуку: " . $e->getMessage());
+            return [];
+        }
     }
 
     public function selectWithSubquery($table, $fields, $subqueryFields, $subqueryTable, $subqueryCondition, $where = null)

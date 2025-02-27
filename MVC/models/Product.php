@@ -231,6 +231,11 @@ class Product extends Model
         ]));
     }
 
+    public static function searchProducts($query)
+    {
+        return Core::get()->db->search('product', ['name', 'description'], $query);
+    }
+
     public static function updateCurrency($newRate)
     {
         return Core::get()->db->update('currency', ['exchange_rate' => $newRate, 'updated_at' => date('Y-m-d H:i:s')], ['currency_code' => 'USD']);
