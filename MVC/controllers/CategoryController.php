@@ -45,13 +45,11 @@ class CategoryController extends Controller
             $category = Category::getCategoryById($categoryId);
         }
 
-        // Створити breadcrumbs
         $breadcrumbs = [
             ['label' => 'Категорії', 'url' => '/category/index'],
             ['label' => $category->name, 'url' => "/category/view/$categoryId"]
         ];
 
-        // Відображення початкової сторінки з товарами
         return $this->render(null, [
             'category' => $category,
             'user' => Users::GetLoggedUserData(),

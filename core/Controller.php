@@ -52,6 +52,13 @@ class Controller
         die;
     }
 
+    public function getJsonResponse() {
+        return [
+            'error_message' => !empty($this->errorMessages) ? implode('<br/>', $this->errorMessages) : null,
+            'success_message' => !empty($this->successMessages) ? implode('<br/>', $this->successMessages) : null
+        ];
+    }
+
     public function addErrorMessage($massage = null) :void
     {
         $this->errorMessages [] = $massage;

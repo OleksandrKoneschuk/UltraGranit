@@ -34,6 +34,25 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionView($params)
+    {
+        $id = intval($params[0]);
+        $product = Product::getProductById($id);
+        $photos = Product::getProductPhotos($id);
+        $mainPhoto = $product->main_photo;
+
+        // Отримуємо дані користувача
+        $user = Users::GetLoggedUserData();
+        $isAdmin = $user ? Users::isAdmin($user) : false; // Визначаємо, чи є користувач адміністратором
+
+        return $this->render(null, [
+            'product' => $product,
+            'photos' => $photos,
+            'mainPhoto' => $mainPhoto,
+            'isAdmin' => $isAdmin
+        ]);
+    }
+
     public function actionAdd($params)
     {
         $categoryId = isset($params[0]) ? intval($params[0]) : null;
@@ -87,6 +106,70 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionLoadReviews() {
+        $productId = $_GET['product_id'] ?? null;
+
+        if (!$productId) {
+            echo json_encode(['reviews' => []]);
+            exit;
+        }
+
+        $reviews = ProductReview::getReviewsByProductId($productId);
+
+        echo json_encode(['reviews' => $reviews]);
+        exit;
+    }
+
+    public function actionAddReview() {
+        $productId = $_POST['product_id'] ?? null;
+        $userName = trim($_POST['user_name'] ?? 'Анонім');
+        $rating = $_POST['rating'] ?? null;
+        $reviewText = trim($_POST['review_text'] ?? '');
+
+        if (!$productId || !$rating || empty($userName)) {
+            echo json_encode(['success' => false, 'message' => 'Будь ласка, заповніть всі обов’язкові поля!']);
+            exit;
+        }
+
+        if (!preg_match('/^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\'\- ]+$/u', $userName)) {
+            echo json_encode(['success' => false, 'message' => 'Ім’я містить заборонені символи або числа!']);
+            exit;
+        }
+
+        if (strlen($reviewText) > 500) {
+            echo json_encode(['success' => false, 'message' => 'Текст відгуку має бути від до 500 символів.']);
+            exit;
+        }
+
+        $badWords = [
+            'хуй', 'хуя', 'хуле', 'хули', 'хує', 'хуяк', 'хуякати', 'хуярити', 'хуєвий', 'хуєво', 'хуйню', 'хуйнi', 'хуйнiю',
+            'хуйню', 'хуйня', 'хуйнiв', 'хуячий', 'хуяч', 'хуячити', 'хуярем', 'хуярю', 'хуярити', 'хуяра', 'хуярити',
+            'залупа', 'залупи', 'залупний', 'залупитися', 'залупився', 'залупилися', 'залуплю', 'залуплюся',
+            'блять', 'блядь', 'бляді', 'блядський', 'блядувати', 'блядуха', 'блядота', 'блядюга', 'бляха', 'бляха-муха', 'бляха муха',
+            'гандон', 'гандони', 'гандонний', 'гандонити', 'гандониться', 'гандончик', 'гандоню', 'гандонювати',
+            'гніда', 'гніди', 'гнідота', 'гнида', 'гниди', 'гнидник', 'гнидота',
+            'пізда', 'піздєц', 'піздець', 'піздєц', 'піздити', 'піздюля', 'піздюліна', 'піздюхи', 'піздюк', 'піздюляка',
+            'пизда', 'пиздець', 'пиздєц', 'пизданути', 'пизданув', 'пизданула', 'пиздить', 'пиздити', 'пиздюк',
+            'заєбали', 'заєбати', 'заїбав', 'заїбати', 'заїбись', 'заєбца', 'заєбало', 'заєбу', 'заєбун',
+            'єбав', 'єбати', 'єбать', 'єбанат', 'єбанько', 'єбанутий', 'єбашити', 'єбашу', 'єбучий', 'єбуча',
+            'єбуче', 'єбучі', 'єбливий', 'єбливе', 'єбліс', 'єбало', 'єбали', 'єбальник', 'єбальня', 'єбучі',
+            'єбло', 'єбливий', 'єблище', 'єбальце', 'єбашу', 'єбашити', 'єбашка', 'єбашня', 'блядушнік'
+        ];
+
+        $replacement = array_fill(0, count($badWords), '***');
+        $reviewText = str_ireplace($badWords, $replacement, $reviewText);
+        $reviewText = preg_replace('/\b('.implode('|', $badWords).')\b/ui', '***', $reviewText);
+
+        $result = ProductReview::addReview($productId, htmlspecialchars($userName, ENT_QUOTES), $rating, htmlspecialchars($reviewText, ENT_QUOTES));
+
+        if ($result) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Помилка збереження відгуку. Спробуйте ще раз!']);
+        }
+        exit;
+    }
+
     public function actionLoadMore($params)
     {
         $categoryId = intval($params[0]);
@@ -106,59 +189,6 @@ class ProductController extends Controller
 
         echo json_encode(['products' => $products, 'hasMore' => $hasMore, 'isAdmin' => Users::isAdmin($this->user)]);
         exit();
-    }
-
-    public function actionView($params)
-    {
-        $id = intval($params[0]);
-        $product = Product::getProductById($id);
-        $photos = Product::getProductPhotos($id);
-        $mainPhoto = $product->main_photo;
-        $reviews = ProductReview::getReviewsByProductId($id);
-
-        if ($this->isPost) {
-            $userName = trim($this->post->user_name ?? '');
-            $rating = $this->post->rating ?? null;
-            $reviewText = trim($this->post->review_text ?? '');
-
-            $_SESSION['review_form_data'] = [
-                'user_name' => $userName,
-                'rating' => $rating,
-                'review_text' => $reviewText
-            ];
-
-            // 🛑 Перевірка: Ім'я не може містити цифри
-            if (empty($userName)) {
-                $this->addErrorMessage('Будь ласка, введіть ваше ім\'я.');
-            } elseif (!preg_match('/^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\' -]+$/u', $userName)) {
-                $this->addErrorMessage('Ім\'я може містити тільки літери, пробіли, апострофи або дефіси.');
-            }
-
-            // 🛑 Перевірка: Оцінка має бути числом від 1 до 5
-            if (!is_numeric($rating) || $rating < 1 || $rating > 5) {
-                $this->addErrorMessage('Некоректний рейтинг. Виберіть оцінку від 1 до 5.');
-            }
-
-            // 🛑 Перевірка: Текст відгуку обов'язковий
-            if (empty($reviewText)) {
-                $this->addErrorMessage('Будь ласка, напишіть свій відгук.');
-            }
-
-            // ✅ Якщо немає помилок, додаємо відгук
-            if (empty($this->errorMessages)) {
-                ProductReview::addReview($id, $userName, $rating, $reviewText);
-                unset($_SESSION['review_form_data']); // Очищаємо збережені дані після успішного додавання
-                $this->addSuccessMessage('Ваш відгук додано.');
-                return $this->redirect('/product/view/' . $id . '#review-form');
-            }
-        }
-
-        return $this->render(null, [
-            'product' => $product,
-            'photos' => $photos,
-            'mainPhoto' => $mainPhoto,
-            'reviews' => $reviews
-        ]);
     }
 
     public function actionSearchAjax()
@@ -186,8 +216,6 @@ class ProductController extends Controller
         ]);
         exit();
     }
-
-
 
     public function actionEdit($params)
     {
@@ -314,5 +342,41 @@ class ProductController extends Controller
         return $this->render('delete', [
             'product' => $product
         ]);
+    }
+
+    public function actionDeleteReview()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            echo json_encode(['success' => false, 'message' => 'Невірний запит.']);
+            exit();
+        }
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if (empty($data['review_id'])) {
+            echo json_encode(['success' => false, 'message' => 'Не передано ID відгуку.']);
+            exit();
+        }
+
+        $reviewId = intval($data['review_id']);
+
+        $review = ProductReview::getReviewById($reviewId);
+
+        if (!$review) {
+            echo json_encode(['success' => false, 'message' => 'Відгук не знайдено.']);
+            exit();
+        }
+
+        if (!Users::isAdmin(Core::get()->session->get('user'))) {
+            echo json_encode(['success' => false, 'message' => 'У вас немає прав для видалення.']);
+            exit();
+        }
+
+        if (ProductReview::deleteReview($reviewId)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Помилка при видаленні.']);
+        }
+        exit();
     }
 }

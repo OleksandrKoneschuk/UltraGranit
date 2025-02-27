@@ -1,5 +1,4 @@
 <?php
-
 namespace MVC\models;
 
 use core\Core;
@@ -16,12 +15,22 @@ class ProductReview extends Model
 
     public static function addReview($productId, $userName, $rating, $reviewText = null)
     {
-        $result = Core::get()->db->insert(self::$tableName, [
+        return Core::get()->db->insert(self::$tableName, [
             'product_id' => $productId,
             'user_name' => $userName,
             'rating' => $rating,
-            'review_text' => $reviewText
+            'review_text' => $reviewText,
+            'created_at' => date('Y-m-d H:i:s')
         ]);
-        return $result;
+    }
+
+    public static function getReviewById($reviewId)
+    {
+        return Core::get()->db->select(self::$tableName, '*', ['id' => $reviewId]);
+    }
+
+    public static function deleteReview($reviewId)
+    {
+        return Core::get()->db->delete(self::$tableName, ['id' => $reviewId]);
     }
 }
