@@ -88,26 +88,10 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
                                 </span>
                             </div>
 
-                            <!-- Випадаючий список результатів -->
                             <div id="search-results"
                                  class="search-results-list position-absolute w-100 bg-white shadow rounded d-none mt-1"></div>
                         </form>
 
-
-
-                        <!--                        <form class="search-form d-flex align-items-center">-->
-<!--                            <div class="input-group">-->
-<!--                                <span class="input-group-text">-->
-<!--                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
-<!--                                         class="bi bi-search" viewBox="0 0 16 16">-->
-<!--                                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>-->
-<!--                                    </svg>-->
-<!--                                </span>-->
-<!--                                <input type="text" id="search-input" class="form-control search-input" placeholder="Пошук..." aria-label="Пошук">-->
-<!--                                <button type="button" id="clear-search" class="btn btn-light d-none">✖</button>-->
-<!--                            </div>-->
-<!--                            <div id="search-results" class="search-results-list position-absolute w-100 bg-white shadow-sm d-none"></div>-->
-<!--                        </form>-->
 
                         <?php if ($isAdmin): ?>
                             <li class="nav-item">
@@ -146,16 +130,17 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
                 </div>
             </div>
 
-
-            <div class="usd-rate">
-                <h7>💵 Курс долара:</h7>
-                <?php if ($currency): ?>
-                    <p>1 USD = <strong><?= number_format($currency->exchange_rate, 2) ?> UAH</strong></p>
-                    <small>Оновлено: <?= date('d.m.Y', strtotime($currency->updated_at)) ?></small>
-                <?php else: ?>
-                    <p class="text-danger">❌ Дані про курс відсутні</p>
-                <?php endif; ?>
-            </div>
+            <?php if ($isAdmin): ?>
+                <div class="usd-rate">
+                    <h7>💵 Курс долара:</h7>
+                    <?php if ($currency): ?>
+                        <p>1 USD = <strong><?= number_format($currency->exchange_rate, 2) ?> UAH</strong></p>
+                        <small>Оновлено: <?= date('d.m.Y', strtotime($currency->updated_at)) ?></small>
+                    <?php else: ?>
+                        <p class="text-danger">❌ Дані про курс відсутні</p>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </header>
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
@@ -172,7 +157,6 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
         <main class="content">
             <?= $Content ?>
         </main>
-
 
         <footer>
             <div class="container">
@@ -284,7 +268,5 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
     });
 
 </script>
-
-
 </body>
 </html>

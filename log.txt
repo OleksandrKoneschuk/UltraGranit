@@ -190,3 +190,50 @@
 [2025-02-08 20:05:26] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u043c.\u0416\u0438\u0442\u043e\u043c\u0438\u0440, \u0432\u0456\u0434\u0434\u0456\u043b\u0435\u043d\u043d\u044f 1"}
 [2025-02-08 20:05:26] 📤 Викликаємо TelegramBot::sendNewOrderNotification для замовлення ID: 3
 [2025-02-24 23:34:42] OrderController::actionSubmit - Submitted data: {"user_id":1,"last_name":"\u041a\u043e\u043d\u0435\u0449\u0443\u043a","first_name":"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","middle_name":"\u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447 ","phone_number":"0979742402","email":"oleksandrkoneschuk@gmail.com","nova_poshta":"\u0444\u0432\u0456\u0430\u0444\u0456\u0432","comment":"\u0425\u043e\u0447\u0443 \u0449\u043e\u0441\u044c \u0442\u0430\u043c"}
+2025-02-28 12:04:20 - Отримані дані: {"update_id":248476061,
+"message":{"message_id":789,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740672779,"text":"/get_currency","entities":[{"offset":0,"length":13,"type":"bot_command"}]}}
+🔍 Команда отримана: /get_currency (не номер)
+2025-02-28 12:04:45 - Отримані дані: {"update_id":248476062,
+"message":{"message_id":791,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744285,"text":"/test","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /test (не номер)
+2025-02-28 12:04:46 - Отримані дані: {"update_id":248476063,
+"message":{"message_id":792,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744286,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+ℹ️ /start: Отримано запит від 684939773 (Oleksandr @zipper16)
+✅ Користувач знайдений: Олександр Конещук (ID: 1)
+2025-02-28 12:04:52 - Отримані дані: {"update_id":248476064,
+"message":{"message_id":794,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744293,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-28 12:05:12 - Отримані дані: {"update_id":248476065,
+"message":{"message_id":796,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744312,"reply_to_message":{"message_id":768,"from":{"id":7872489450,"is_bot":true,"first_name":"UltraGranitBot","username":"UltraGranitHelperBot"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1739045060,"text":"\ud83d\udcb5 \u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043d\u043e\u0432\u0438\u0439 \u043a\u0443\u0440\u0441 USD \u2192 UAH (\u043b\u0438\u0448\u0435 \u0447\u0438\u0441\u043b\u043e, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 39.50):","entities":[{"offset":55,"length":5,"type":"code"}]},"text":"42"}}
+🔄 Курс USD оновлено до 42 UAH (Менеджер/Адмін ID: 684939773)
+2025-02-28 12:05:29 - Отримані дані: {"update_id":248476066,
+"message":{"message_id":798,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744329,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+ℹ️ /start: Отримано запит від 684939773 (Oleksandr @zipper16)
+✅ Користувач знайдений: Олександр Конещук (ID: 1)
+2025-02-28 12:06:14 - Отримані дані: {"update_id":248476067,
+"message":{"message_id":800,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744374,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-28 12:06:24 - Отримані дані: {"update_id":248476068,
+"message":{"message_id":802,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744384,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+ℹ️ /start: Отримано запит від 684939773 (Oleksandr @zipper16)
+❌ Користувач НЕ знайдений у БД. Запитуємо номер телефону.
+2025-02-28 12:06:34 - Отримані дані: {"update_id":248476069,
+"message":{"message_id":804,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744394,"reply_to_message":{"message_id":803,"from":{"id":7872489450,"is_bot":true,"first_name":"UltraGranitBot","username":"UltraGranitHelperBot"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744384,"text":"\ud83d\udcf2 \u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0441\u0432\u0456\u0439 \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0443 \u0443 \u0444\u043e\u0440\u043c\u0430\u0442\u0456 0123456789 (\u0431\u0435\u0437 +38):","entities":[{"offset":41,"length":10,"type":"bold"}]},"text":"0979742402","entities":[{"offset":0,"length":10,"type":"phone_number"}]}}
+🔍 Шукаємо телефон у БД: 0979742402
+🔹 Оновлення Telegram ID для користувача: ID=1, Telegram ID=684939773
+✅ Telegram ID успішно оновлено!
+2025-02-28 12:06:38 - Отримані дані: {"update_id":248476070,
+"message":{"message_id":806,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744398,"text":"/menu","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}
+🔍 Команда отримана: /menu (не номер)
+2025-02-28 12:07:04 - Отримані дані: {"update_id":248476071,
+"message":{"message_id":808,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744424,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}
+ℹ️ /start: Отримано запит від 684939773 (Oleksandr @zipper16)
+❌ Користувач НЕ знайдений у БД. Запитуємо номер телефону.
+2025-02-28 12:07:23 - Отримані дані: {"update_id":248476072,
+"message":{"message_id":810,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744444,"reply_to_message":{"message_id":809,"from":{"id":7872489450,"is_bot":true,"first_name":"UltraGranitBot","username":"UltraGranitHelperBot"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744424,"text":"\ud83d\udcf2 \u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0441\u0432\u0456\u0439 \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0443 \u0443 \u0444\u043e\u0440\u043c\u0430\u0442\u0456 0123456789 (\u0431\u0435\u0437 +38):","entities":[{"offset":41,"length":10,"type":"bold"}]},"text":"0123456789","entities":[{"offset":0,"length":10,"type":"phone_number"},{"offset":0,"length":10,"type":"bold"}]}}
+🔍 Шукаємо телефон у БД: 0123456789
+2025-02-28 12:07:47 - Отримані дані: {"update_id":248476073,
+"message":{"message_id":812,"from":{"id":684939773,"is_bot":false,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","language_code":"uk"},"chat":{"id":684939773,"first_name":"Oleksandr","last_name":"Koneschuk","username":"zipper16","type":"private"},"date":1740744467,"text":"0979742402","entities":[{"offset":0,"length":10,"type":"phone_number"}]}}
+🔍 Шукаємо телефон у БД: 0979742402
+🔹 Оновлення Telegram ID для користувача: ID=1, Telegram ID=684939773
+✅ Telegram ID успішно оновлено!

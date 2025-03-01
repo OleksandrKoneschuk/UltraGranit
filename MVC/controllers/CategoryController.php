@@ -55,6 +55,7 @@ class CategoryController extends Controller
             'breadcrumbs' => $breadcrumbs
         ]);
     }
+
     protected function generateBreadcrumbs($route)
     {
             $parts = explode('/', trim($route, '/'));

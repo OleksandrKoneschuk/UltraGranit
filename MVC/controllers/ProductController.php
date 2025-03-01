@@ -46,14 +46,28 @@ class ProductController extends Controller
         $photos = Product::getProductPhotos($id);
         $mainPhoto = $product->main_photo;
 
-        // Отримуємо дані користувача
+        // Отримуємо категорію товару
+        $category = Category::getCategoryById($product->category_id);
+
+        // Формуємо breadcrumbs
+        $breadcrumbs = [
+            ['label' => 'Категорії', 'url' => '/category/index'],
+        ];
+
+        if ($category) {
+            $breadcrumbs[] = ['label' => $category->name, 'url' => "/category/view/{$category->id}"];
+        }
+
+        $breadcrumbs[] = ['label' => $product->name, 'url' => "/product/view/$id"];
+
         $user = Users::GetLoggedUserData();
-        $isAdmin = $user ? Users::isAdmin($user) : false; // Визначаємо, чи є користувач адміністратором
+        $isAdmin = $user ? Users::isAdmin($user) : false;
 
         return $this->render(null, [
             'product' => $product,
             'photos' => $photos,
             'mainPhoto' => $mainPhoto,
+            'breadcrumbs' => $breadcrumbs,
             'isAdmin' => $isAdmin
         ]);
     }

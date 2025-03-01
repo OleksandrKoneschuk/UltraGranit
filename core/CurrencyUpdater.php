@@ -14,7 +14,7 @@ class CurrencyUpdater
 
         $lastUpdate = $db->select('currency', ['updated_at'], ['currency_code' => 'USD'])[0] ?? null;
 
-        if (!$lastUpdate || strtotime($lastUpdate->updated_at) < strtotime('-1 day')) {
+        if (!$lastUpdate || strtotime($lastUpdate->updated_at) < strtotime('-2 hours')) {
             self::updateCurrency();
         }
     }
@@ -22,7 +22,7 @@ class CurrencyUpdater
     public static function updateCurrency()
     {
         $db = Core::get()->db;
-        $apiUrl = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5";
+        $apiUrl = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=11";
 
         $response = file_get_contents($apiUrl);
         if (!$response) {
