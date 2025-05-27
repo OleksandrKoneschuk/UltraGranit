@@ -24,6 +24,7 @@ $this->Title = 'Каталог'; ?>
                 </li>
             </ol>
         </nav>
+
         <h1 class="text-center mb-5"> Каталог</h1>
         <div class="row">
             <?php foreach ($rows as $row) : ?>

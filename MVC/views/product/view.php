@@ -114,7 +114,7 @@ $this->Title = $product->name;
         <br/>
 
         <h3>Додати відгук</h3>
-        <div id="review-messages"></div> <!-- Тут будуть виводитися повідомлення -->
+        <div id="review-messages"></div>
 
         <form id="review-form">
             <input type="hidden" name="product_id" value="<?= $product->id ?>">

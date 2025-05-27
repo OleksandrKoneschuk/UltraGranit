@@ -6,8 +6,10 @@ $this->Title = 'Каталог'; ?>
 
 <main>
     <link rel="stylesheet" href="/MVC/views/css/category.css">
+
     <div class="container">
-        <nav aria-label="breadcrumb">
+
+        <nav aria-label="breadcrumb"  class="path">
             <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
                 <li class="breadcrumb-item">
                     <a class="link-body-emphasis" href="/">
@@ -24,6 +26,8 @@ $this->Title = 'Каталог'; ?>
                 </li>
             </ol>
         </nav>
+
+
         <h1 class="text-center mb-5"> Каталог</h1>
         <div class="row">
             <?php foreach ($rows as $row) : ?>
