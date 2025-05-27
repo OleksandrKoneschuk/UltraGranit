@@ -47,5 +47,6 @@ $this->Title = 'Політика конфіденційності';
     <h2>6. Контакти</h2>
     <p>Якщо у вас виникли запитання щодо цієї політики, звертайтеся на email:
         <a href="mailto:oleksandrkoneschuk@gmail.com">oleksandrkoneschuk@gmail.com</a></p>
-</div>
 
+    <p><a href="/site/docs">Локальна система документації</a></p>
+</div>

@@ -14,5 +14,9 @@ class SiteController extends Controller
         return $this->render('privacy');
     }
 
+    public function actionDocs() {
+        return $this->render('docs');
+    }
+
 }
 
