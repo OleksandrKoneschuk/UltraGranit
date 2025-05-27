@@ -60,7 +60,7 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
                 message: "Ми використовуємо файли cookie для покращення роботи сайту.",
                 dismiss: "Зрозуміло",
                 link: "Детальніше",
-                href: "/privacy-policy",
+                href: "/site/privacy",
             }
         })
     });
@@ -265,7 +265,9 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
                 </div>
             </div>
             <p>© <?= date("Y") ?> Ultra Granit. Усі права захищені.</p>
-        </div>
+            <p><a href="/site/privacy">Політика конфіденційності</a></p>
+
+    </div>
         </footer>
 </div>
 
@@ -275,20 +277,17 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
         const navMenu = document.querySelector(".nav-menu");
 
         if (menuToggle && navMenu) {
-            // Відкриття / Закриття меню при натисканні на кнопку
             menuToggle.addEventListener("click", function (event) {
-                event.stopPropagation(); // Запобігаємо закриттю при кліку на кнопку
+                event.stopPropagation();
                 navMenu.classList.toggle("active");
             });
 
-            // Закриваємо меню при кліку поза його межами
             document.addEventListener("click", function (event) {
                 if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
                     navMenu.classList.remove("active");
                 }
             });
 
-            // Закриваємо меню при скролінгу сторінки
             window.addEventListener("scroll", function () {
                 navMenu.classList.remove("active");
             });
