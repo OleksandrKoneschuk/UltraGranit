@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: UltraGranit API
+  version: 1.0.0
+  description: Minimal API documentation for core features
+
+paths:
+  /product/add-review:
+    post:
+      summary: Add a product review
+      description: Submit a new review for a specific product
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - product_id
+                - user_name
+                - rating
+                - review_text
+              properties:
+                product_id:
+                  type: integer
+                user_name:
+                  type: string
+                rating:
+                  type: integer
+                review_text:
+                  type: string
+      responses:
+        '200':
+          description: Review submitted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+
+  /product/load-reviews:
+    get:
+      summary: Get reviews by product ID
+      parameters:
+        - name: product_id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of product reviews
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reviews:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        user_name:
+                          type: string
+                        rating:
+                          type: integer
+                        review_text:
+                          type: string
+                        created_at:
+                          type: string
+                          format: date-time
