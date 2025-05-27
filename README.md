@@ -29,7 +29,7 @@
    - Для XAMPP: `htdocs/UltraGranit`
    - Для OpenServer: `domains/UltraGranit`
 
-3. Імпортуй базу даних (дамп додається або створюється вручну).
+3. Імпортуй базу даних.
 
 4. Налаштуй підключення до БД у файлі:
    ```
@@ -54,22 +54,36 @@
 | GET   | `/api/currency`         | Поточний курс USD з ПриватБанку         |
 | POST  | `/order/create`         | Оформлення замовлення (та інше)         |
 
+> Документація API — у [swagger.yaml](./swagger.yaml)
+> (використовується Swagger UI для візуалізації)
+> Для запуску Swagger UI, скопіюйте `swagger.yaml` у кореневу директорію проєкту та відкрийте у браузері:
+
+
+---
+
+## Документація
+
+- Технічна документація: [DOCS.md](./DOCS.md)
+- Конфіденційність: [PRIVACY_POLICY.md](./PRIVACY_POLICY.md)
+- EULA: [EULA.md](./EULA.md) 
+- Ліцензії: [license-report.md](./license-check-report.md)
+
 ---
 
 ## Конфіденційність та GDPR
 
 - Проєкт враховує вимоги захисту персональних даних (GDPR).
-- Cookie popup та політика конфіденційності буде додана.
+- Cookie popup реалізований.
+- Політика конфіденційності: [PRIVACY_POLICY.md](./PRIVACY_POLICY.md)
 
 ---
 
 ## Команди
 
-| Команда                 | Опис                                      |
-|------------------------|-------------------------------------------|
-| `php -S localhost:8000`| Локальний запуск PHP (якщо без Apache)    |
-| `npx license-checker`  | Перевірка ліцензій (у Node середовищі)    |
-| `npm run storybook`    | Запуск Storybook (якщо є фронт на React)  |
+| Команда                 | Опис                  |
+|------------------------|------------------------|
+| `php -S localhost:8000`| Локальний запуск PHP   |
+
 
 ---
 
@@ -83,4 +97,4 @@ GitHub: [@OleksandrKoneschuk](https://github.com/OleksandrKoneschuk)
 
 ## Ліцензія
 
-Проєкт поширюється відповідно до MIT License
+Проєкт поширюється відповідно до [EULA (End User License Agreement)](./EULA.md)
