@@ -17,7 +17,6 @@ if (empty($Content))
 $current_page = $_SERVER['REQUEST_URI'];
 
 require_once 'core/CurrencyUpdater.php';
-
 $currency = \core\CurrencyUpdater::getCurrentUSD();
 
 ?>
@@ -40,6 +39,35 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
     <script src="/MVC/views/js/basket.js" defer></script>
     <script src="/MVC/views/js/search.js" defer></script>
 </head>
+
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+
+<script>
+    window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+            palette: {
+                popup: {
+                    background: "#000"
+                },
+                button: {
+                    background: "#f1d600"
+                }
+            },
+            theme: "classic",
+            position: "bottom-right",
+            content: {
+                message: "Ми використовуємо файли cookie для покращення роботи сайту.",
+                dismiss: "Зрозуміло",
+                link: "Детальніше",
+                href: "/privacy-policy",
+            }
+        })
+    });
+</script>
+
+
+<body>
 <div>
     <div class="wrapper">
         <header>
@@ -237,8 +265,8 @@ $currency = \core\CurrencyUpdater::getCurrentUSD();
                 </div>
             </div>
             <p>© <?= date("Y") ?> Ultra Granit. Усі права захищені.</p>
-    </div>
-    </footer>
+        </div>
+        </footer>
 </div>
 
 <script>
